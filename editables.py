@@ -8,12 +8,12 @@ cash=int(input("Quantite d'argent au debut du jeu ?"))
 #Option shop pour item
 
 agi=int(input("Pour agilité ? (agi)"))
-def=int(input("Pour défense ? (def)"))
+defense=int(input("Pour défense ? (def)"))
 strength=int(input("Pour strength ? (str)"))
 luck=int(input("Pour luck ? (luck)"))
 
 #Specialities
-numb_dialogues=int(input("Nombre de dialogues voulues ?"))
+numberdialogues=int(input("Nombre de dialogues voulues ?"))
 expneeded=int(input("Nombre d'exp voulue pour lvl up ? (de niveau 1 a 2). Le EXP necessaire pour lvl up pour les niveaux superieures sont proportionnels de 2"))
 expgivenbasic=int(input("Nombre d'exp obtenue en tuant un monstre basique ou en completant une quete simple ?"))
 expgivenunique=int(input("Nombre d'exp obtenue en tuant un monstre unique/boss ou en completant une quete epique ?"))
