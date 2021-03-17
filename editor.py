@@ -1,3 +1,5 @@
+name=input("Votre nom ?")
+
 health=int(input("Pour health ? (HP)")
 invplace=int(input("Nombre de place dans l'inventaire ?")
 #Make list
