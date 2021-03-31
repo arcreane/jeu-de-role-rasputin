@@ -19,7 +19,7 @@ stats.grid(row="0", column="0", ipady=10, padx=10, pady=10)
 items=tk.Button(frame1, text="Ajouter des items et definir l'inventaire dans votre jeu") #command=items_edit_window
 items.grid(row="1", column="0", ipady=10, padx=10, pady=10)
 
-dialogues=tk.Button(frame1, text="Ajouter les dialogues dans votre jeu" #command=dialogues_edit_window
+dialogues=tk.Button(frame1, text="Ajouter les dialogues dans votre jeu") #command=dialogues_edit_window
 dialogues.grid(row="0", column="1", ipady=10, padx=10, pady=10)
 
 editor.mainloop()
