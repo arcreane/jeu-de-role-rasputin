@@ -2,7 +2,7 @@ import tkinter as tk
 
 master = tk.Tk()
 master.geometry("600x400")
-master.configure(bg="gris")
+master.configure(bg="grey")
 
 title = tk.Label(master, text="Bienvenue sur le jeu", bg="cyan", font=("Arial", 20, "bold"))
 title.pack(side="top", pady=50)
