@@ -19,7 +19,7 @@ editor.grid(row="0", column="1", ipady=10, padx=10, pady=10)
 menu_bar = tk.Menu(master)
 file_menu = tk.Menu(menu_bar, tearoff=0) #création du menu en haut de la page
 file_menu.add_command(label="Quitter", command=master.quit)
-menu_bar.add_cascade(label"Fichier", menu=file_menu)
+menu_bar.add_cascade(label="Fichier", menu=file_menu)
 master.config(menu=menu_bar)
 
 master.mainloop()
