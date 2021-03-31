@@ -1,5 +1,8 @@
 import tkinter as tk
 
+def openjeu():
+    exec(open("/home/eleves/a/arri61428/Bureau/Menu.py").read())
+
 master = tk.Tk()
 master.geometry("600x400")
 master.configure(bg="blue")
@@ -10,7 +13,7 @@ title.pack(side="top", pady=50)
 frame1 = tk.Frame(master, bg="green")
 frame1.pack()
 
-game = tk.Button(frame1, text="JOUER AU JEU", background="yellow")
+game = tk.Button(frame1, text="JOUER AU JEU", background="yellow", command=openjeu)
 game.grid(row="0", column="0", ipady=10, padx=10, pady=10)
 
 editor = tk.Button(frame1, text="ALLER A L'EDITEUR", background="yellow")
