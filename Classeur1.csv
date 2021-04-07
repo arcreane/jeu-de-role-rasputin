@@ -1,0 +1,5 @@
+﻿numero;titre;choix1;goto1;choix2;goto2
+1;Quelle couleur ?;rouge;2;bleu;2
+2;ou aller ?;cuisine;3;salon;4
+3;que faire ?;rien;2;quelque chose;4
+4;fin
