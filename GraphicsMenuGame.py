@@ -4,7 +4,6 @@ master = tk.Tk()
 master.geometry("600x400")
 master.configure(bg="#b9b4b3")
 
-
 frame1=tk.Frame(master, bg='#b9b4b3')
 frame1.pack()
 
