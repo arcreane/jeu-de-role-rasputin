@@ -16,6 +16,7 @@ def stats_edit_window():
     spinBox_att.grid(row="0", column="1", ipady=10, padx=10, pady=10)
     spinBox_att.delete(0)
     spinBox_att.insert(1, default)
+    att=spinBox_att.get()
 
     defe = tk.Label(frame_edit_stats, text="Defense", font=("Arial", 12), fg="black")
     defe.grid(row="1", column="0", ipady=10, padx=10, pady=10)
@@ -23,6 +24,7 @@ def stats_edit_window():
     spinBox_def.grid(row="1", column="1", ipady=10, padx=10, pady=10)
     spinBox_def.delete(0)
     spinBox_def.insert(1, default)
+    defense=spinBox_def.get()
 
     agi = tk.Label(frame_edit_stats,text="Agilite", font=("Arial", 12), fg="black")
     agi.grid(row="2", column="0", ipady=10, padx=10, pady=10)
@@ -30,6 +32,7 @@ def stats_edit_window():
     spinBox_agi.grid(row="2", column="1", ipady=10, padx=10, pady=10)
     spinBox_agi.delete(0)
     spinBox_agi.insert(1, default)
+    agi=spinBox_agi.get()
 
     luck = tk.Label(frame_edit_stats,text="Chance", font=("Arial", 12), fg="black")
     luck.grid(row="3", column="0", ipady=10, padx=10, pady=10)
@@ -37,6 +40,11 @@ def stats_edit_window():
     spinBox_luck.grid(row="3", column="1", ipady=10, padx=10, pady=10)
     spinBox_luck.delete(0)
     spinBox_luck.insert(1, default)
+    luck=spinBox_luck.get()
+
+    print(att,defense,luck,agi)
+    #nbr_restants = 50 - att - defense - agi - luck
+    #Nombre_restants = tk.Label(frame_edit_stats,text=("Il vous reste actuellement:",nbr_restants), font=("Arial",12), fg="black")
 
     editor.destroy()
     
