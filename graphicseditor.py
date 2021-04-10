@@ -9,25 +9,34 @@ def stats_edit_window():
     frame_edit_stats=tk.Frame(stats_edit, bg="orange")
     frame_edit_stats.pack()
 
+    default=10
     att=tk.Label(frame_edit_stats, text="Attaque", font=("Arial", 12), fg="black")
     att.grid(row="0", column="0", ipady=10, padx=10, pady=10)
     spinBox_att = tk.Spinbox(frame_edit_stats, from_=1, to=50, font=('arial', 12, 'normal'), bg='#F0F8FF', width=10)
     spinBox_att.grid(row="0", column="1", ipady=10, padx=10, pady=10)
+    spinBox_att.delete(0)
+    spinBox_att.insert(1, default)
 
     defe = tk.Label(frame_edit_stats, text="Defense", font=("Arial", 12), fg="black")
     defe.grid(row="1", column="0", ipady=10, padx=10, pady=10)
     spinBox_def = tk.Spinbox(frame_edit_stats, from_=1, to=50, font=('arial', 12, 'normal'), bg='#F0F8FF', width=10)
     spinBox_def.grid(row="1", column="1", ipady=10, padx=10, pady=10)
+    spinBox_def.delete(0)
+    spinBox_def.insert(1, default)
 
     agi = tk.Label(frame_edit_stats,text="Agilite", font=("Arial", 12), fg="black")
     agi.grid(row="2", column="0", ipady=10, padx=10, pady=10)
     spinBox_agi = tk.Spinbox(frame_edit_stats, from_=1, to=50, font=('arial', 12, 'normal'), bg='#F0F8FF', width=10)
     spinBox_agi.grid(row="2", column="1", ipady=10, padx=10, pady=10)
+    spinBox_agi.delete(0)
+    spinBox_agi.insert(1, default)
 
     luck = tk.Label(frame_edit_stats,text="Chance", font=("Arial", 12), fg="black")
     luck.grid(row="3", column="0", ipady=10, padx=10, pady=10)
     spinBox_luck = tk.Spinbox(frame_edit_stats, from_=1, to=50, font=('arial', 12, 'normal'), bg='#F0F8FF', width=10)
     spinBox_luck.grid(row="3", column="1", ipady=10, padx=10, pady=10)
+    spinBox_luck.delete(0)
+    spinBox_luck.insert(1, default)
 
     editor.destroy()
     
