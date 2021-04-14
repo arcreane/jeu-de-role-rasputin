@@ -87,7 +87,7 @@ Button2.configure(highlightcolor="black")
 Button2.configure(pady="0")
 Button2.configure(text='''EDITER''')
 
-Button3 = tk.Button(Frame2)
+Button3 = tk.Button(Frame2,command=top.quit)
 Button3.place(relx=0.744, rely=0.353, height=54, width=107)
 Button3.configure(activebackground="#ececec")
 Button3.configure(activeforeground="#000000")
