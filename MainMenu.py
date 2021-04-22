@@ -281,7 +281,10 @@ def update_text(var):  # fonction pour update le nombre de points restants
         Label4.configure(background="#ff0000")
         Label4.configure(foreground="#ffffff")
 
-    monTexte.set("Il vous reste " + str(point_iu) + " points !")
+    if 1 < point_iu:
+        monTexte.set("Il vous reste " + str(point_iu) + " points !")
+    if point_iu <= 1:
+        monTexte.set("Il vous reste " + str(point_iu) + " point !")
 
 
 def create_options():  # fonction pour créer la fenetre contenant les différentes options
