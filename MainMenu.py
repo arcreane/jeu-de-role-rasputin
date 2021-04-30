@@ -3,13 +3,15 @@ from tkinter import filedialog as fd
 import pygame
 
 
-def open_file_path():  # fonction qui permet de demander à l'utilisateur de choisir le fichier du jeu
+def open_file_path():  # fonction qui permet de demander à l'utilisateur de choisir le fichier du jeu et qui affiche le boutton "suivant"
     filename = fd.askopenfilename()
     print(filename)
     file[0] = filename
+    if len(file[0]) > 2:
+        Button6.place(relx=0.404, rely=0.653, height=54, width=107)
 
 
-def create_premier(): # fonction pour créer le premier menu
+def create_premier():  # fonction pour créer le premier menu
     Frame1 = tk.Frame(root)
     Frame1.place(relx=0.033, rely=0.044, relheight=0.233, relwidth=0.942)
     Frame1.configure(relief='groove')
@@ -79,7 +81,7 @@ def create_premier(): # fonction pour créer le premier menu
 
 
 def create_deuxieme():  # fonction pour créer la premiere fenetre apres le main menu
-    global Frame3
+    global Frame3, Button6
 
     Frame3 = tk.Frame(root)
     Frame3.place(relx=0.031, rely=0.289, relheight=0.567, relwidth=0.945)
@@ -101,7 +103,6 @@ def create_deuxieme():  # fonction pour créer la premiere fenetre apres le main
     Button4.configure(text='''Choisir un fichier :''')
 
     Button6 = tk.Button(Frame3, command=create_troisieme)
-    Button6.place(relx=0.404, rely=0.653, height=54, width=107)
     Button6.configure(activebackground="#ececec")
     Button6.configure(activeforeground="#000000")
     Button6.configure(background="#85b90b")
@@ -111,6 +112,7 @@ def create_deuxieme():  # fonction pour créer la premiere fenetre apres le main
     Button6.configure(highlightcolor="black")
     Button6.configure(pady="0")
     Button6.configure(text='''Suivant''')
+
 
 
 def create_troisieme():  # fonction pour créer la dexieme fenetre apres le main menu (statistiques)
@@ -238,21 +240,24 @@ def reinit():  # fonction pour reinitialiser les statistiques si l'utilisateur v
 
 
 def update_text(var):  # fonction pour update le nombre de points restants
+    global Button7, Button5
+
+    Button5 = tk.Button(Frame5)
+
     attaque = Scale1.get()
     defense = Scale2.get()
     agilite = Scale3.get()
     chance = Scale4.get()
     point_iu = 30 - attaque - defense - agilite - chance
 
-    if point_iu == 0:
-        global Button7, Button5
+    if point_iu == 0:  # s'il n'y a plus de points disponibles
 
         Scale1.config(state="disabled", takefocus=0)
         Scale2.config(state="disabled", takefocus=0)
         Scale3.config(state="disabled", takefocus=0)
         Scale4.config(state="disabled", takefocus=0)
 
-        Button5 = tk.Button(Frame5)
+
         Button5.place(relx=0.095, rely=0.197, height=44, width=87)
         Button5.configure(activebackground="#ececec")
         Button5.configure(activeforeground="#000000")
@@ -281,10 +286,35 @@ def update_text(var):  # fonction pour update le nombre de points restants
         Label4.configure(background="#ff0000")
         Label4.configure(foreground="#ffffff")
 
-    if 1 < point_iu:
+    if 1 < point_iu:  # afficher le nombre de points restants avec un S
         monTexte.set("Il vous reste " + str(point_iu) + " points !")
-    if point_iu <= 1:
+
+    if point_iu <= 1:  # afficher le nombre de point restant sans S
         monTexte.set("Il vous reste " + str(point_iu) + " point !")
+
+    if point_iu < 0:  # si la personne arrive à depasser le nombre de points max
+        monTexte.set("Attention, trop de points")
+
+        Label4.configure(background="#ff0000")
+        Label4.configure(foreground="#ffffff")
+
+        Scale1.config(state="disabled", takefocus=0)
+        Scale2.config(state="disabled", takefocus=0)
+        Scale3.config(state="disabled", takefocus=0)
+        Scale4.config(state="disabled", takefocus=0)
+
+        Button7 = tk.Button(Frame5, command=reinit)
+        Button7.place(relx=0.095, rely=0.704, height=44, width=87)
+        Button7.configure(activebackground="#ececec")
+        Button7.configure(activeforeground="#000000")
+        Button7.configure(background="#55a25f")
+        Button7.configure(disabledforeground="#a3a3a3")
+        Button7.configure(font="-family {Segoe UI} -size 12")
+        Button7.configure(foreground="#000000")
+        Button7.configure(highlightbackground="#d9d9d9")
+        Button7.configure(highlightcolor="black")
+        Button7.configure(pady="0")
+        Button7.configure(text='''Réinitialiser''')
 
 
 def create_options():  # fonction pour créer la fenetre contenant les différentes options
@@ -340,7 +370,7 @@ def create_options():  # fonction pour créer la fenetre contenant les différen
     Label4.configure(text='''Options :''')
 
 
-file = [0]
+file = ["0"]
 
 pygame.mixer.init()
 
@@ -362,8 +392,9 @@ create_premier()
 
 menu_bar = tk.Menu(root)
 file_menu = tk.Menu(menu_bar, tearoff=0)
-file_menu.add_command(label="Quitter", command=root.quit)
 file_menu.add_command(label="Options", command=create_options)
+file_menu.add_separator()
+file_menu.add_command(label="Quitter", command=root.quit)
 menu_bar.add_cascade(label="Fichier", menu=file_menu)
 root.config(menu=menu_bar)
 
