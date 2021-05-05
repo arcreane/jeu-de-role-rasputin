@@ -113,7 +113,17 @@ def create_deuxieme():  # fonction pour créer la premiere fenetre apres le main
     bouton_suivantfile.configure(pady="0")
     bouton_suivantfile.configure(text='''Suivant''')
 
-
+    bouton_retour = tk.Button(Frame3, command=lambda: [Frame3.place_forget(), create_premier()])
+    bouton_retour.place(relx=0.204, rely=0.353, height=54, width=107)
+    bouton_retour.configure(activebackground="#ececec")
+    bouton_retour.configure(activeforeground="#000000")
+    bouton_retour.configure(background="#85b90b")
+    bouton_retour.configure(disabledforeground="#a3a3a3")
+    bouton_retour.configure(foreground="#000000")
+    bouton_retour.configure(highlightbackground="#d9d9d9")
+    bouton_retour.configure(highlightcolor="black")
+    bouton_retour.configure(pady="0")
+    bouton_retour.configure(text='''Retour''')
 
 def create_troisieme():  # fonction pour créer la dexieme fenetre apres le main menu (statistiques)
     Frame3.destroy()
@@ -223,6 +233,18 @@ def create_troisieme():  # fonction pour créer la dexieme fenetre apres le main
     Frame5.configure(relief="groove")
     Frame5.configure(background="#40cc58")
 
+    bouton_retour = tk.Button(Frame5, command=lambda: [create_deuxieme(), Frame4.place_forget(), Frame5.place_forget(), Labelframe1.place_forget(), Labelframe2.place_forget(), Labelframe3.place_forget(), Labelframe4.place_forget()])
+    bouton_retour.place(relx=0.095, rely=0.817, height=44, width=87)
+    bouton_retour.configure(activebackground="#ececec")
+    bouton_retour.configure(activeforeground="#000000")
+    bouton_retour.configure(background="#55a25f")
+    bouton_retour.configure(disabledforeground="#a3a3a3")
+    bouton_retour.configure(foreground="#000000")
+    bouton_retour.configure(highlightbackground="#d9d9d9")
+    bouton_retour.configure(highlightcolor="black")
+    bouton_retour.configure(pady="0")
+    bouton_retour.configure(text='''Retour''')
+
 
 def reinit():  # fonction pour reinitialiser les statistiques si l'utilisateur veut d'autres choses
     scale_attaque.config(state="normal", takefocus=0)
@@ -271,7 +293,7 @@ def update_text(var):  # fonction pour update le nombre de points restants
         bouton_suivantcara.configure(text='''Suivant''')
 
         bouton_reinitcara = tk.Button(Frame5, command=reinit)
-        bouton_reinitcara.place(relx=0.095, rely=0.704, height=44, width=87)
+        bouton_reinitcara.place(relx=0.095, rely=0.507, height=44, width=87)
         bouton_reinitcara.configure(activebackground="#ececec")
         bouton_reinitcara.configure(activeforeground="#000000")
         bouton_reinitcara.configure(background="#55a25f")
@@ -304,7 +326,7 @@ def update_text(var):  # fonction pour update le nombre de points restants
         scale_chance.config(state="disabled", takefocus=0)
 
         bouton_reinitcara = tk.Button(Frame5, command=reinit)
-        bouton_reinitcara.place(relx=0.095, rely=0.704, height=44, width=87)
+        bouton_reinitcara.place(relx=0.095, rely=0.507, height=44, width=87)
         bouton_reinitcara.configure(activebackground="#ececec")
         bouton_reinitcara.configure(activeforeground="#000000")
         bouton_reinitcara.configure(background="#55a25f")
