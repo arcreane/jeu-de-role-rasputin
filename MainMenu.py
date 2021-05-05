@@ -8,7 +8,7 @@ def open_file_path():  # fonction qui permet de demander à l'utilisateur de cho
     print(filename)
     file[0] = filename
     if len(file[0]) > 2:
-        bouton_suivantfile.place(relx=0.404, rely=0.653, height=54, width=107)
+        bouton_suivantfile.place(relx=0.604, rely=0.353, height=54, width=107)
 
 
 def create_premier():  # fonction pour créer le premier menu
@@ -119,6 +119,7 @@ def create_deuxieme():  # fonction pour créer la premiere fenetre apres le main
     bouton_retour.configure(activeforeground="#000000")
     bouton_retour.configure(background="#85b90b")
     bouton_retour.configure(disabledforeground="#a3a3a3")
+    bouton_retour.configure(font="-family {Segoe UI} -size 12")
     bouton_retour.configure(foreground="#000000")
     bouton_retour.configure(highlightbackground="#d9d9d9")
     bouton_retour.configure(highlightcolor="black")
@@ -238,6 +239,7 @@ def create_troisieme():  # fonction pour créer la dexieme fenetre apres le main
     bouton_retour.configure(activebackground="#ececec")
     bouton_retour.configure(activeforeground="#000000")
     bouton_retour.configure(background="#55a25f")
+    bouton_retour.configure(font="-family {Segoe UI} -size 12")
     bouton_retour.configure(disabledforeground="#a3a3a3")
     bouton_retour.configure(foreground="#000000")
     bouton_retour.configure(highlightbackground="#d9d9d9")
@@ -255,8 +257,8 @@ def reinit():  # fonction pour reinitialiser les statistiques si l'utilisateur v
     scale_agilite.set(0)
     scale_defense.set(0)
     scale_chance.set(0)
-    Button7.place_forget()
-    Button5.place_forget()
+    bouton_suivantcara.place_forget()
+    bouton_reinitcara.place_forget()
     label_update.configure(background="#40cc58")
     label_update.configure(foreground="#000000")
 
