@@ -113,6 +113,21 @@ def create_deuxieme():  # fonction pour créer la premiere fenetre apres le main
     Button6.configure(pady="0")
     Button6.configure(text='''Suivant''')
 
+    Button9 = tk.Button(command=create_premier)
+    Button9.place(relx=0.200, rely=0.100, height=54, width=107)
+    Button9.configure(activebackground="#ececec")
+    Button9.configure(activeforeground="#000000")
+    Button9.configure(background="#85b90b")
+    Button9.configure(disabledforeground="#a3a3a3")
+    Button9.configure(foreground="#000000")
+    Button9.configure(highlightbackground="#d9d9d9")
+    Button9.configure(highlightcolor="black")
+    Button9.configure(pady="0")
+    Button9.configure(text='''Retour''')
+
+
+
+
 
 
 def create_troisieme():  # fonction pour créer la dexieme fenetre apres le main menu (statistiques)
@@ -374,9 +389,9 @@ file = ["0"]
 
 pygame.mixer.init()
 
-son = pygame.mixer.Sound('main_loop.wav')
-son.play(loops=-1, maxtime=0, fade_ms=0)
-son.set_volume(0.5)
+#son = pygame.mixer.Sound('main_loop.wav')
+#son.play(loops=-1, maxtime=0, fade_ms=0)
+#son.set_volume(0.5)
 
 # création du main menu
 
