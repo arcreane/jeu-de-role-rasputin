@@ -1,0 +1,12 @@
+import csv
+
+with open('stats.csv', mode='r') as csvfile:
+    csv_reader = csv.reader(csvfile, delimiter=',')
+
+    for row in csv_reader:
+        if row[0] == 'attack':
+            attack = row[1]
+        if row[0] == 'defense':
+            defense = row[1]
+
+    print(attack, defense)
