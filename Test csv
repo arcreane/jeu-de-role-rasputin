@@ -1,0 +1,9 @@
+import csv
+
+with open('stats.csv', mode='w', newline='') as csvfile:
+    fieldnames = ['name', 'stats']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    writer.writeheader()
+    writer.writerow({'name': 'attack', 'stats': '69'})
+    writer.writerow({'name': 'defense', 'stats': '42'})
