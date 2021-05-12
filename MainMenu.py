@@ -36,7 +36,7 @@ def create_premier():  # fonction pour créer le premier menu
     Frame2.configure(background="#80e1a7")
 
     bouton_jouer = tk.Button(Frame2, command=lambda: [create_deuxieme(), Frame1.place_forget(), Frame2.place_forget(),
-                                                 label_credits.place_forget()])
+                                                      label_credits.place_forget()])
     bouton_jouer.place(relx=0.083, rely=0.353, height=54, width=107)
     bouton_jouer.configure(activebackground="#ececec")
     bouton_jouer.configure(activeforeground="#000000")
@@ -48,7 +48,7 @@ def create_premier():  # fonction pour créer le premier menu
     bouton_jouer.configure(pady="0")
     bouton_jouer.configure(text='''JOUER''')
 
-    bouton_editer = tk.Button(Frame2, command=lambda : exec(open('graphicseditor.py').read()))
+    bouton_editer = tk.Button(Frame2, command=lambda: exec(open('graphicseditor.py').read()))
     bouton_editer.place(relx=0.413, rely=0.353, height=54, width=107)
     bouton_editer.configure(activebackground="#ececec")
     bouton_editer.configure(activeforeground="#000000")
@@ -126,10 +126,11 @@ def create_deuxieme():  # fonction pour créer la premiere fenetre apres le main
     bouton_retour.configure(pady="0")
     bouton_retour.configure(text='''Retour''')
 
+
 def create_troisieme():  # fonction pour créer la dexieme fenetre apres le main menu (statistiques)
     Frame3.destroy()
 
-    global scale_attaque, scale_defense, scale_agilite, scale_chance, Frame5, monTexte, label_update
+    global scale_attaque, scale_defense, scale_agilite, scale_chance, Frame5, monTexte, label_update, Frame4
     monTexte = tk.StringVar()
     monTexte.set("Il vous reste 30 points !")
 
@@ -234,7 +235,9 @@ def create_troisieme():  # fonction pour créer la dexieme fenetre apres le main
     Frame5.configure(relief="groove")
     Frame5.configure(background="#40cc58")
 
-    bouton_retour = tk.Button(Frame5, command=lambda: [create_deuxieme(), Frame4.place_forget(), Frame5.place_forget(), Labelframe1.place_forget(), Labelframe2.place_forget(), Labelframe3.place_forget(), Labelframe4.place_forget()])
+    bouton_retour = tk.Button(Frame5, command=lambda: [create_deuxieme(), Frame4.place_forget(), Frame5.place_forget(),
+                                                       Labelframe1.place_forget(), Labelframe2.place_forget(),
+                                                       Labelframe3.place_forget(), Labelframe4.place_forget()])
     bouton_retour.place(relx=0.095, rely=0.817, height=44, width=87)
     bouton_retour.configure(activebackground="#ececec")
     bouton_retour.configure(activeforeground="#000000")
@@ -266,7 +269,7 @@ def reinit():  # fonction pour reinitialiser les statistiques si l'utilisateur v
 def update_text(var):  # fonction pour update le nombre de points restants
     global bouton_suivantcara, bouton_reinitcara
 
-    bouton_suivantcara = tk.Button(Frame5)
+    bouton_suivantcara = tk.Button(Frame5, command=lambda: [create_quatrieme(), Frame5.destroy(), Frame4.destroy()])
 
     attaque = scale_attaque.get()
     defense = scale_defense.get()
@@ -280,7 +283,6 @@ def update_text(var):  # fonction pour update le nombre de points restants
         scale_defense.config(state="disabled", takefocus=0)
         scale_agilite.config(state="disabled", takefocus=0)
         scale_chance.config(state="disabled", takefocus=0)
-
 
         bouton_suivantcara.place(relx=0.095, rely=0.197, height=44, width=87)
         bouton_suivantcara.configure(activebackground="#ececec")
@@ -341,6 +343,167 @@ def update_text(var):  # fonction pour update le nombre de points restants
         bouton_reinitcara.configure(text='''Réinitialiser''')
 
 
+def create_quatrieme():  # fonction pour créer la fenetre de jeu !
+    Frame1 = tk.Frame(root)
+    Frame1.place(relx=0.009, rely=0.014, relheight=0.118, relwidth=0.977)
+    Frame1.configure(relief='groove')
+    Frame1.configure(borderwidth="2")
+    Frame1.configure(relief="groove")
+    Frame1.configure(background="#d9d9d9")
+
+    Label1 = tk.Label(Frame1)
+    Label1.place(relx=0.009, rely=0.118, height=61, width=1033)
+    Label1.configure(background="#d9d9d9")
+    Label1.configure(disabledforeground="#a3a3a3")
+    Label1.configure(font="-family {Segoe UI} -size 21 -weight bold -underline 1")
+    Label1.configure(foreground="#000000")
+    Label1.configure(text='''Titre histoire''')
+
+    Frame2 = tk.Frame(root)
+    Frame2.place(relx=0.009, rely=0.153, relheight=0.826
+                 , relwidth=0.977)
+    Frame2.configure(relief='groove')
+    Frame2.configure(borderwidth="2")
+    Frame2.configure(relief="groove")
+    Frame2.configure(background="#d9d9d9")
+
+    Frame3 = tk.Frame(Frame2)
+    Frame3.place(relx=0.019, rely=0.168, relheight=0.277
+                 , relwidth=0.175)
+    Frame3.configure(relief='groove')
+    Frame3.configure(borderwidth="2")
+    Frame3.configure(relief="groove")
+    Frame3.configure(background="#d9d9d9")
+
+    Label2 = tk.Label(Frame3)
+    Label2.place(relx=0.054, rely=0.061, height=141, width=164)
+    Label2.configure(background="#d9d9d9")
+    Label2.configure(disabledforeground="#a3a3a3")
+    Label2.configure(foreground="#000000")
+    Label2.configure(text='''Choix 1''')
+
+    Frame4 = tk.Frame(Frame2)
+    Frame4.place(relx=0.408, rely=0.168, relheight=0.277, relwidth=0.174)
+    Frame4.configure(relief='groove')
+    Frame4.configure(borderwidth="2")
+    Frame4.configure(relief="groove")
+    Frame4.configure(background="#d9d9d9")
+
+    Label3 = tk.Label(Frame4)
+    Label3.place(relx=0.054, rely=0.061, height=141, width=165)
+    Label3.configure(background="#d9d9d9")
+    Label3.configure(disabledforeground="#a3a3a3")
+    Label3.configure(foreground="#000000")
+    Label3.configure(text='''Choix 2''')
+
+    Frame5 = tk.Frame(Frame2)
+    Frame5.place(relx=0.796, rely=0.168, relheight=0.277
+                 , relwidth=0.173)
+    Frame5.configure(relief='groove')
+    Frame5.configure(borderwidth="2")
+    Frame5.configure(relief="groove")
+    Frame5.configure(background="#d9d9d9")
+
+    Label4 = tk.Label(Frame5)
+    Label4.place(relx=0.055, rely=0.061, height=141, width=161)
+    Label4.configure(background="#d9d9d9")
+    Label4.configure(disabledforeground="#a3a3a3")
+    Label4.configure(foreground="#000000")
+    Label4.configure(text='''Choix 3''')
+
+    Button1 = tk.Button(Frame2)
+    Button1.place(relx=0.645, rely=0.067, height=24, width=247)
+    Button1.configure(activebackground="#ececec")
+    Button1.configure(activeforeground="#000000")
+    Button1.configure(background="#d9d9d9")
+    Button1.configure(disabledforeground="#a3a3a3")
+    Button1.configure(foreground="#000000")
+    Button1.configure(highlightbackground="#d9d9d9")
+    Button1.configure(highlightcolor="black")
+    Button1.configure(pady="0")
+    Button1.configure(text='''Ouvrir l'inventaire''')
+
+    Labelframe1 = tk.LabelFrame(Frame2)
+    Labelframe1.place(relx=0.019, rely=0.017, relheight=0.126
+                      , relwidth=0.483)
+    Labelframe1.configure(relief='groove')
+    Labelframe1.configure(foreground="black")
+    Labelframe1.configure(text='''Points de vie''')
+    Labelframe1.configure(background="#d9d9d9")
+
+    Scale1 = tk.Scale(Labelframe1, from_=0.0, to=100.0)
+    Scale1.place(relx=0.02, rely=0.267, relwidth=0.973, relheight=0.0
+                 , height=42, bordermode='ignore')
+    Scale1.configure(activebackground="#ececec")
+    Scale1.configure(background="#d9d9d9")
+    Scale1.configure(foreground="#000000")
+    Scale1.configure(highlightbackground="#d9d9d9")
+    Scale1.configure(highlightcolor="black")
+    Scale1.configure(orient="horizontal")
+    Scale1.configure(troughcolor="#d9d9d9")
+    Scale1.set(100)
+
+    Button2 = tk.Button(Frame2)
+    Button2.place(relx=0.019, rely=0.555, height=64, width=187)
+    Button2.configure(activebackground="#ececec")
+    Button2.configure(activeforeground="#000000")
+    Button2.configure(background="#d9d9d9")
+    Button2.configure(disabledforeground="#a3a3a3")
+    Button2.configure(foreground="#000000")
+    Button2.configure(highlightbackground="#d9d9d9")
+    Button2.configure(highlightcolor="black")
+    Button2.configure(pady="0")
+    Button2.configure(text='''Choisir''')
+
+    Button3 = tk.Button(Frame2)
+    Button3.place(relx=0.408, rely=0.555, height=64, width=187)
+    Button3.configure(activebackground="#ececec")
+    Button3.configure(activeforeground="#000000")
+    Button3.configure(background="#d9d9d9")
+    Button3.configure(disabledforeground="#a3a3a3")
+    Button3.configure(foreground="#000000")
+    Button3.configure(highlightbackground="#d9d9d9")
+    Button3.configure(highlightcolor="black")
+    Button3.configure(pady="0")
+    Button3.configure(text='''Choisir''')
+
+    Button4 = tk.Button(Frame2)
+    Button4.place(relx=0.796, rely=0.555, height=64, width=177)
+    Button4.configure(activebackground="#ececec")
+    Button4.configure(activeforeground="#000000")
+    Button4.configure(background="#d9d9d9")
+    Button4.configure(disabledforeground="#a3a3a3")
+    Button4.configure(foreground="#000000")
+    Button4.configure(highlightbackground="#d9d9d9")
+    Button4.configure(highlightcolor="black")
+    Button4.configure(pady="0")
+    Button4.configure(text='''Choisir''')
+
+    Button5 = tk.Button(Frame2)
+    Button5.place(relx=0.199, rely=0.79, height=64, width=217)
+    Button5.configure(activebackground="#ececec")
+    Button5.configure(activeforeground="#000000")
+    Button5.configure(background="#d9d9d9")
+    Button5.configure(disabledforeground="#a3a3a3")
+    Button5.configure(foreground="#000000")
+    Button5.configure(highlightbackground="#d9d9d9")
+    Button5.configure(highlightcolor="black")
+    Button5.configure(pady="0")
+    Button5.configure(text='''Retour''')
+
+    Button6 = tk.Button(Frame2)
+    Button6.place(relx=0.588, rely=0.79, height=64, width=217)
+    Button6.configure(activebackground="#ececec")
+    Button6.configure(activeforeground="#000000")
+    Button6.configure(background="#d9d9d9")
+    Button6.configure(disabledforeground="#a3a3a3")
+    Button6.configure(foreground="#000000")
+    Button6.configure(highlightbackground="#d9d9d9")
+    Button6.configure(highlightcolor="black")
+    Button6.configure(pady="0")
+    Button6.configure(text='''Quitter''')
+
+
 def create_options():  # fonction pour créer la fenetre contenant les différentes options
     def change_volume(val):  # fonction pour changer le volume du son jouer par pygame
         var = int(val) / 100
@@ -398,14 +561,14 @@ file = ["0"]
 
 pygame.mixer.init()
 
-son = pygame.mixer.Sound('main_loop.wav')
-son.play(loops=-1, maxtime=0, fade_ms=0)
-son.set_volume(0.5)
+# son = pygame.mixer.Sound()
+# son.play(loops=-1, maxtime=0, fade_ms=0)
+# son.set_volume(0.5)
 
 # création du main menu
 
 root = tk.Tk()
-root.geometry("640x480+468+138")
+root.geometry("1080x720+468+138")
 root.resizable(0, 0)
 root.title("DualCent")
 root.configure(background="#bff2c7")
