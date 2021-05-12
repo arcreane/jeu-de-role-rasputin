@@ -1,0 +1,12 @@
+﻿RASPUTIN
+
+Bienvenue dans Rasputin, le jeu qui vous permet de créer et de jouer à votre propre histoire.
+
+Le jeu se déroule comme un livre-jeu, vous allez devoir faire divers choix qui affecterons directement votre progression dans le jeu.  Intrigue, combat, meurtres et mort, Rasputin vous permet de profiter d’une expérience riche en émotions et frissons, et ce totalement personnalisable,
+
+Le jeu est divisé en deux modes : le mode « édition » et le mode « jeu ».
+Le mode « éditeur » vous permettra de confectionner votre jeu de A à Z. Armes, niveau d’expérience, caractéristiques de base, scénario… absolument tout est modifiable à votre guise. N’oubliez surtout pas de sauvegarder et voilà, votre merveilleuse histoire est prête à être jouer ! 
+
+Le mode « jeu » constitue la principale attraction de Rasputin. Une fois dans le menu, vous aurez le choix entre démarrer une nouvelle partie à partir d’une histoire créer au préalable, ou bien charger un partie en cours de progression. Il ne vous reste plus qu’à faire les bons choix et arriver au bout de votre propre aventure !
+
+
