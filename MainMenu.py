@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog as fd
 import pygame
+import os
 
 
 def open_file_path():  # fonction qui permet de demander à l'utilisateur de choisir le fichier du jeu et qui affiche le boutton "suivant"
@@ -12,72 +13,38 @@ def open_file_path():  # fonction qui permet de demander à l'utilisateur de cho
 
 
 def create_premier():  # fonction pour créer le premier menu
-    Frame1 = tk.Frame(root)
+    Frame1 = tk.Frame(root, relief='groove', borderwidth="2", background="#80e1a7")
     Frame1.place(relx=0.033, rely=0.044, relheight=0.233, relwidth=0.942)
-    Frame1.configure(relief='groove')
-    Frame1.configure(borderwidth="2")
-    Frame1.configure(relief="groove")
-    Frame1.configure(background="#80e1a7")
 
-    label_acceuil = tk.Label(Frame1)
+    label_acceuil = tk.Label(Frame1, background="#80e1a7", disabledforeground="#a3a3a3",
+                             font="-family {Forte} -size 24 -weight bold -underline 1", foreground="#000000",
+                             highlightbackground="#f0f0f0f0f0f0", text='''Bienvenue sur DualCent''')
     label_acceuil.place(relx=0.017, rely=0.133, height=71, width=574)
-    label_acceuil.configure(background="#80e1a7")
-    label_acceuil.configure(disabledforeground="#a3a3a3")
-    label_acceuil.configure(font="-family {Forte} -size 24 -weight bold -underline 1")
-    label_acceuil.configure(foreground="#000000")
-    label_acceuil.configure(highlightbackground="#f0f0f0f0f0f0")
-    label_acceuil.configure(text='''Bienvenue sur DualCent''')
 
-    Frame2 = tk.Frame(root)
+    Frame2 = tk.Frame(root, relief='groove', borderwidth="2", background="#80e1a7")
     Frame2.place(relx=0.031, rely=0.289, relheight=0.567, relwidth=0.945)
-    Frame2.configure(relief='groove')
-    Frame2.configure(borderwidth="2")
-    Frame2.configure(relief="groove")
-    Frame2.configure(background="#80e1a7")
 
-    bouton_jouer = tk.Button(Frame2, command=lambda: [create_deuxieme(), Frame1.place_forget(), Frame2.place_forget(),
-                                                      label_credits.place_forget()])
+    bouton_jouer = tk.Button(Frame2, text='''JOUER''',
+                             command=lambda: [create_deuxieme(), Frame1.place_forget(), Frame2.place_forget(),
+                                              label_credits.place_forget()], activebackground="#ececec",
+                             activeforeground="#000000", background="#85b90b", disabledforeground="#a3a3a3",
+                             foreground="#000000", highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
     bouton_jouer.place(relx=0.083, rely=0.353, height=54, width=107)
-    bouton_jouer.configure(activebackground="#ececec")
-    bouton_jouer.configure(activeforeground="#000000")
-    bouton_jouer.configure(background="#85b90b")
-    bouton_jouer.configure(disabledforeground="#a3a3a3")
-    bouton_jouer.configure(foreground="#000000")
-    bouton_jouer.configure(highlightbackground="#d9d9d9")
-    bouton_jouer.configure(highlightcolor="black")
-    bouton_jouer.configure(pady="0")
-    bouton_jouer.configure(text='''JOUER''')
 
-    bouton_editer = tk.Button(Frame2, command=lambda: exec(open('graphicseditor.py').read()))
+    bouton_editer = tk.Button(Frame2, text='''EDITER''', command=lambda: os.system('editor.py'),
+                              activebackground="#ececec", activeforeground="#000000", background="#85b90b",
+                              disabledforeground="#a3a3a3", foreground="#000000", highlightbackground="#d9d9d9",
+                              highlightcolor="black", pady="0")
     bouton_editer.place(relx=0.413, rely=0.353, height=54, width=107)
-    bouton_editer.configure(activebackground="#ececec")
-    bouton_editer.configure(activeforeground="#000000")
-    bouton_editer.configure(background="#85b90b")
-    bouton_editer.configure(disabledforeground="#a3a3a3")
-    bouton_editer.configure(foreground="#000000")
-    bouton_editer.configure(highlightbackground="#d9d9d9")
-    bouton_editer.configure(highlightcolor="black")
-    bouton_editer.configure(pady="0")
-    bouton_editer.configure(text='''EDITER''')
 
-    bouton_quitter = tk.Button(Frame2, command=root.quit)
+    bouton_quitter = tk.Button(Frame2, text='''QUITTER''', command=root.quit, activebackground="#ececec",
+                               activeforeground="#000000", background="#85b90b", disabledforeground="#a3a3a3",
+                               foreground="#000000", highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
     bouton_quitter.place(relx=0.744, rely=0.353, height=54, width=107)
-    bouton_quitter.configure(activebackground="#ececec")
-    bouton_quitter.configure(activeforeground="#000000")
-    bouton_quitter.configure(background="#85b90b")
-    bouton_quitter.configure(disabledforeground="#a3a3a3")
-    bouton_quitter.configure(foreground="#000000")
-    bouton_quitter.configure(highlightbackground="#d9d9d9")
-    bouton_quitter.configure(highlightcolor="black")
-    bouton_quitter.configure(pady="0")
-    bouton_quitter.configure(text='''QUITTER''')
 
-    label_credits = tk.Label(root)
+    label_credits = tk.Label(root, text='''Crée par Rasputin Team''', background="#bff2c7",
+                             disabledforeground="#a3a3a3", foreground="#000000")
     label_credits.place(relx=0.719, rely=0.889, height=41, width=174)
-    label_credits.configure(background="#bff2c7")
-    label_credits.configure(disabledforeground="#a3a3a3")
-    label_credits.configure(foreground="#000000")
-    label_credits.configure(text='''Crée par Rasputin Team''')
 
 
 def create_deuxieme():  # fonction pour créer la premiere fenetre apres le main menu
@@ -561,9 +528,9 @@ file = ["0"]
 
 pygame.mixer.init()
 
-# son = pygame.mixer.Sound()
-# son.play(loops=-1, maxtime=0, fade_ms=0)
-# son.set_volume(0.5)
+son = pygame.mixer.Sound('main_loop.wav')
+son.play(loops=-1, maxtime=0, fade_ms=0)
+son.set_volume(0.5)
 
 # création du main menu
 
