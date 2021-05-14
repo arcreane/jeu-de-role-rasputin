@@ -50,48 +50,25 @@ def create_premier():  # fonction pour créer le premier menu
 def create_deuxieme():  # fonction pour créer la premiere fenetre apres le main menu
     global Frame3, bouton_suivantfile
 
-    Frame3 = tk.Frame(root)
+    Frame3 = tk.Frame(root, relief='groove', borderwidth="2", background="#80e1a7")
     Frame3.place(relx=0.031, rely=0.289, relheight=0.567, relwidth=0.945)
-    Frame3.configure(relief='groove')
-    Frame3.configure(borderwidth="2")
-    Frame3.configure(relief="groove")
-    Frame3.configure(background="#80e1a7")
 
-    bouton_selectionfile = tk.Button(Frame3, command=open_file_path)
+    bouton_selectionfile = tk.Button(Frame3, text='''Choisir un fichier :''', command=open_file_path,
+                                     activebackground="#ececec", activeforeground="#000000", background="#85b90b",
+                                     disabledforeground="#a3a3a3", foreground="#000000", highlightbackground="#d9d9d9",
+                                     highlightcolor="black", pady="0")
     bouton_selectionfile.place(relx=0.404, rely=0.353, height=54, width=107)
-    bouton_selectionfile.configure(activebackground="#ececec")
-    bouton_selectionfile.configure(activeforeground="#000000")
-    bouton_selectionfile.configure(background="#85b90b")
-    bouton_selectionfile.configure(disabledforeground="#a3a3a3")
-    bouton_selectionfile.configure(foreground="#000000")
-    bouton_selectionfile.configure(highlightbackground="#d9d9d9")
-    bouton_selectionfile.configure(highlightcolor="black")
-    bouton_selectionfile.configure(pady="0")
-    bouton_selectionfile.configure(text='''Choisir un fichier :''')
 
-    bouton_suivantfile = tk.Button(Frame3, command=create_troisieme)
-    bouton_suivantfile.configure(activebackground="#ececec")
-    bouton_suivantfile.configure(activeforeground="#000000")
-    bouton_suivantfile.configure(background="#85b90b")
-    bouton_suivantfile.configure(disabledforeground="#a3a3a3")
-    bouton_suivantfile.configure(foreground="#000000")
-    bouton_suivantfile.configure(highlightbackground="#d9d9d9")
-    bouton_suivantfile.configure(highlightcolor="black")
-    bouton_suivantfile.configure(pady="0")
-    bouton_suivantfile.configure(text='''Suivant''')
+    bouton_suivantfile = tk.Button(Frame3, text='''Suivant''', command=create_troisieme, activebackground="#ececec",
+                                   activeforeground="#000000", background="#85b90b", disabledforeground="#a3a3a3",
+                                   foreground="#000000", highlightbackground="#d9d9d9", highlightcolor="black",
+                                   pady="0")
 
-    bouton_retour = tk.Button(Frame3, command=lambda: [Frame3.place_forget(), create_premier()])
+    bouton_retour = tk.Button(Frame3, text='''Retour''', command=lambda: [Frame3.place_forget(), create_premier()],
+                              activebackground="#ececec", activeforeground="#000000", background="#85b90b",
+                              disabledforeground="#a3a3a3", font="-family {Segoe UI} -size 12", foreground="#000000",
+                              highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
     bouton_retour.place(relx=0.204, rely=0.353, height=54, width=107)
-    bouton_retour.configure(activebackground="#ececec")
-    bouton_retour.configure(activeforeground="#000000")
-    bouton_retour.configure(background="#85b90b")
-    bouton_retour.configure(disabledforeground="#a3a3a3")
-    bouton_retour.configure(font="-family {Segoe UI} -size 12")
-    bouton_retour.configure(foreground="#000000")
-    bouton_retour.configure(highlightbackground="#d9d9d9")
-    bouton_retour.configure(highlightcolor="black")
-    bouton_retour.configure(pady="0")
-    bouton_retour.configure(text='''Retour''')
 
 
 def create_troisieme():  # fonction pour créer la dexieme fenetre apres le main menu (statistiques)
@@ -101,121 +78,61 @@ def create_troisieme():  # fonction pour créer la dexieme fenetre apres le main
     monTexte = tk.StringVar()
     monTexte.set("Il vous reste 30 points !")
 
-    Frame4 = tk.Frame(root)
+    Frame4 = tk.Frame(root, relief='groove', borderwidth="2", background="#40cc58")
     Frame4.place(relx=0.017, rely=0.022, relheight=0.167, relwidth=0.958)
-    Frame4.configure(relief='groove')
-    Frame4.configure(borderwidth="2")
-    Frame4.configure(relief="groove")
-    Frame4.configure(background="#40cc58")
 
-    label_caracteristiques = tk.Label(Frame4)
+    label_caracteristiques = tk.Label(Frame4, text='''Choisissez vos caractéristiques :''', background="#40cc58",
+                                      disabledforeground="#a3a3a3", font="-family {Segoe UI} -size 14 -underline 1",
+                                      foreground="#000000")
     label_caracteristiques.place(relx=0.016, rely=0.12, height=54, width=304)
-    label_caracteristiques.configure(background="#40cc58")
-    label_caracteristiques.configure(disabledforeground="#a3a3a3")
-    label_caracteristiques.configure(font="-family {Segoe UI} -size 14 -underline 1")
-    label_caracteristiques.configure(foreground="#000000")
-    label_caracteristiques.configure(text='''Choisissez vos caractéristiques :''')
 
-    label_update = tk.Label(Frame4, textvariable=monTexte)
+    label_update = tk.Label(Frame4, textvariable=monTexte, background="#40cc58", disabledforeground="#a3a3a3",
+                            font="-family {Segoe UI} -size 14", foreground="#000000")
     label_update.place(relx=0.538, rely=0.12, height=54, width=264)
-    label_update.configure(background="#40cc58")
-    label_update.configure(disabledforeground="#a3a3a3")
-    label_update.configure(font="-family {Segoe UI} -size 14")
-    label_update.configure(foreground="#000000")
 
-    Labelframe1 = tk.LabelFrame(root)
+    Labelframe1 = tk.LabelFrame(root, relief='groove', foreground="black", text='''Attaque''', background="#40cc58")
     Labelframe1.place(relx=0.016, rely=0.2, relheight=0.189, relwidth=0.781)
-    Labelframe1.configure(relief='groove')
-    Labelframe1.configure(foreground="black")
-    Labelframe1.configure(text='''Attaque''')
-    Labelframe1.configure(background="#40cc58")
 
-    scale_attaque = tk.Scale(Labelframe1, from_=0.0, to=30, command=update_text)
+    scale_attaque = tk.Scale(Labelframe1, from_=0.0, to=30, command=update_text, activebackground="#ececec",
+                             background="#55a25f", foreground="#000000", highlightbackground="#55a25f",
+                             highlightcolor="black", length="586", orient="horizontal", troughcolor="#55a25f")
     scale_attaque.place(relx=0.016, rely=0.271, relheight=0.580, relwidth=0.962)
-    scale_attaque.configure(activebackground="#ececec")
-    scale_attaque.configure(background="#55a25f")
-    scale_attaque.configure(foreground="#000000")
-    scale_attaque.configure(highlightbackground="#55a25f")
-    scale_attaque.configure(highlightcolor="black")
-    scale_attaque.configure(length="586")
-    scale_attaque.configure(orient="horizontal")
-    scale_attaque.configure(troughcolor="#55a25f")
 
-    Labelframe2 = tk.LabelFrame(root)
+    Labelframe2 = tk.LabelFrame(root, relief='groove', foreground="black", text='''Défense''', background="#40cc58")
     Labelframe2.place(relx=0.016, rely=0.4, relheight=0.189, relwidth=0.781)
-    Labelframe2.configure(relief='groove')
-    Labelframe2.configure(foreground="black")
-    Labelframe2.configure(text='''Défense''')
-    Labelframe2.configure(background="#40cc58")
 
-    scale_defense = tk.Scale(Labelframe2, from_=0.0, to=30, command=update_text)
+    scale_defense = tk.Scale(Labelframe2, from_=0.0, to=30, command=update_text, activebackground="#ececec",
+                             background="#55a25f", foreground="#000000", highlightbackground="#55a25f",
+                             highlightcolor="black", length="586", orient="horizontal", troughcolor="#55a25f")
     scale_defense.place(relx=0.016, rely=0.271, relheight=0.580, relwidth=0.962)
-    scale_defense.configure(activebackground="#ececec")
-    scale_defense.configure(background="#55a25f")
-    scale_defense.configure(foreground="#000000")
-    scale_defense.configure(highlightbackground="#55a25f")
-    scale_defense.configure(highlightcolor="black")
-    scale_defense.configure(length="586")
-    scale_defense.configure(orient="horizontal")
-    scale_defense.configure(troughcolor="#55a25f")
 
-    Labelframe3 = tk.LabelFrame(root)
+    Labelframe3 = tk.LabelFrame(root, relief='groove', foreground="black", text='''Agilité''', background="#40cc58")
     Labelframe3.place(relx=0.016, rely=0.6, relheight=0.189, relwidth=0.781)
-    Labelframe3.configure(relief='groove')
-    Labelframe3.configure(foreground="black")
-    Labelframe3.configure(text='''Agilité''')
-    Labelframe3.configure(background="#40cc58")
 
-    scale_agilite = tk.Scale(Labelframe3, from_=0.0, to=30, command=update_text)
+    scale_agilite = tk.Scale(Labelframe3, from_=0.0, to=30, command=update_text, activebackground="#ececec",
+                             background="#55a25f", foreground="#000000", highlightbackground="#55a25f",
+                             highlightcolor="black", length="586", orient="horizontal", troughcolor="#55a25f")
     scale_agilite.place(relx=0.016, rely=0.271, relheight=0.580, relwidth=0.962)
-    scale_agilite.configure(activebackground="#ececec")
-    scale_agilite.configure(background="#55a25f")
-    scale_agilite.configure(foreground="#000000")
-    scale_agilite.configure(highlightbackground="#55a25f")
-    scale_agilite.configure(highlightcolor="black")
-    scale_agilite.configure(length="586")
-    scale_agilite.configure(orient="horizontal")
-    scale_agilite.configure(troughcolor="#55a25f")
 
-    Labelframe4 = tk.LabelFrame(root)
+    Labelframe4 = tk.LabelFrame(root, relief='groove', foreground="black", text='''Chance''', background="#40cc58")
     Labelframe4.place(relx=0.016, rely=0.8, relheight=0.189, relwidth=0.781)
-    Labelframe4.configure(relief='groove')
-    Labelframe4.configure(foreground="black")
-    Labelframe4.configure(text='''Chance''')
-    Labelframe4.configure(background="#40cc58")
 
-    scale_chance = tk.Scale(Labelframe4, from_=0.0, to=30, command=update_text)
+    scale_chance = tk.Scale(Labelframe4, from_=0.0, to=30, command=update_text, activebackground="#ececec",
+                            background="#55a25f", foreground="#000000", highlightbackground="#55a25f",
+                            highlightcolor="black", length="586", orient="horizontal", troughcolor="#55a25f")
     scale_chance.place(relx=0.016, rely=0.271, relheight=0.580, relwidth=0.962)
-    scale_chance.configure(activebackground="#ececec")
-    scale_chance.configure(background="#55a25f")
-    scale_chance.configure(foreground="#000000")
-    scale_chance.configure(highlightbackground="#55a25f")
-    scale_chance.configure(highlightcolor="black")
-    scale_chance.configure(length="586")
-    scale_chance.configure(orient="horizontal")
-    scale_chance.configure(troughcolor="#55a25f")
 
-    Frame5 = tk.Frame(root)
+    Frame5 = tk.Frame(root, relief='groove', borderwidth="2", background="#40cc58")
     Frame5.place(relx=0.813, rely=0.2, relheight=0.789, relwidth=0.164)
-    Frame5.configure(relief='groove')
-    Frame5.configure(borderwidth="2")
-    Frame5.configure(relief="groove")
-    Frame5.configure(background="#40cc58")
 
-    bouton_retour = tk.Button(Frame5, command=lambda: [create_deuxieme(), Frame4.place_forget(), Frame5.place_forget(),
-                                                       Labelframe1.place_forget(), Labelframe2.place_forget(),
-                                                       Labelframe3.place_forget(), Labelframe4.place_forget()])
+    bouton_retour = tk.Button(Frame5, text='''Retour''',
+                              command=lambda: [create_deuxieme(), Frame4.place_forget(), Frame5.place_forget(),
+                                               Labelframe1.place_forget(), Labelframe2.place_forget(),
+                                               Labelframe3.place_forget(), Labelframe4.place_forget()],
+                              activebackground="#ececec", activeforeground="#000000", background="#55a25f",
+                              font="-family {Segoe UI} -size 12", disabledforeground="#a3a3a3", foreground="#000000",
+                              highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
     bouton_retour.place(relx=0.095, rely=0.817, height=44, width=87)
-    bouton_retour.configure(activebackground="#ececec")
-    bouton_retour.configure(activeforeground="#000000")
-    bouton_retour.configure(background="#55a25f")
-    bouton_retour.configure(font="-family {Segoe UI} -size 12")
-    bouton_retour.configure(disabledforeground="#a3a3a3")
-    bouton_retour.configure(foreground="#000000")
-    bouton_retour.configure(highlightbackground="#d9d9d9")
-    bouton_retour.configure(highlightcolor="black")
-    bouton_retour.configure(pady="0")
-    bouton_retour.configure(text='''Retour''')
 
 
 def reinit():  # fonction pour reinitialiser les statistiques si l'utilisateur veut d'autres choses
@@ -263,18 +180,11 @@ def update_text(var):  # fonction pour update le nombre de points restants
         bouton_suivantcara.configure(pady="0")
         bouton_suivantcara.configure(text='''Suivant''')
 
-        bouton_reinitcara = tk.Button(Frame5, command=reinit)
+        bouton_reinitcara = tk.Button(Frame5, text='''Réinitialiser''', command=reinit, activebackground="#ececec",
+                                      activeforeground="#000000", background="#55a25f", disabledforeground="#a3a3a3",
+                                      font="-family {Segoe UI} -size 12", foreground="#000000",
+                                      highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
         bouton_reinitcara.place(relx=0.095, rely=0.507, height=44, width=87)
-        bouton_reinitcara.configure(activebackground="#ececec")
-        bouton_reinitcara.configure(activeforeground="#000000")
-        bouton_reinitcara.configure(background="#55a25f")
-        bouton_reinitcara.configure(disabledforeground="#a3a3a3")
-        bouton_reinitcara.configure(font="-family {Segoe UI} -size 12")
-        bouton_reinitcara.configure(foreground="#000000")
-        bouton_reinitcara.configure(highlightbackground="#d9d9d9")
-        bouton_reinitcara.configure(highlightcolor="black")
-        bouton_reinitcara.configure(pady="0")
-        bouton_reinitcara.configure(text='''Réinitialiser''')
 
         label_update.configure(background="#ff0000")
         label_update.configure(foreground="#ffffff")
@@ -296,18 +206,11 @@ def update_text(var):  # fonction pour update le nombre de points restants
         scale_agilite.config(state="disabled", takefocus=0)
         scale_chance.config(state="disabled", takefocus=0)
 
-        bouton_reinitcara = tk.Button(Frame5, command=reinit)
+        bouton_reinitcara = tk.Button(Frame5, text='''Réinitialiser''', command=reinit, activebackground="#ececec",
+                                      activeforeground="#000000", background="#55a25f", disabledforeground="#a3a3a3",
+                                      font="-family {Segoe UI} -size 12", foreground="#000000",
+                                      highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
         bouton_reinitcara.place(relx=0.095, rely=0.507, height=44, width=87)
-        bouton_reinitcara.configure(activebackground="#ececec")
-        bouton_reinitcara.configure(activeforeground="#000000")
-        bouton_reinitcara.configure(background="#55a25f")
-        bouton_reinitcara.configure(disabledforeground="#a3a3a3")
-        bouton_reinitcara.configure(font="-family {Segoe UI} -size 12")
-        bouton_reinitcara.configure(foreground="#000000")
-        bouton_reinitcara.configure(highlightbackground="#d9d9d9")
-        bouton_reinitcara.configure(highlightcolor="black")
-        bouton_reinitcara.configure(pady="0")
-        bouton_reinitcara.configure(text='''Réinitialiser''')
 
 
 def create_quatrieme():  # fonction pour créer la fenetre de jeu !
@@ -482,46 +385,25 @@ def create_options():  # fonction pour créer la fenetre contenant les différen
     top.title("Options")
     top.configure(background="#7dffbe")
 
-    Labelframe5 = tk.LabelFrame(top)
+    Labelframe5 = tk.LabelFrame(top, text='''Changer le volume de la musique''', relief='groove',
+                                font="-family {Segoe UI} -size 13", foreground="black", background="#85a736")
     Labelframe5.place(relx=0.031, rely=0.313, relheight=0.281, relwidth=0.938)
-    Labelframe5.configure(relief='groove')
-    Labelframe5.configure(font="-family {Segoe UI} -size 13")
-    Labelframe5.configure(foreground="black")
-    Labelframe5.configure(text='''Changer le volume de la musique''')
-    Labelframe5.configure(background="#85a736")
 
-    scale_volume = tk.Scale(Labelframe5, from_=0.0, to=100.0, command=change_volume)
+    scale_volume = tk.Scale(Labelframe5, from_=0.0, to=100.0, command=change_volume, activebackground="#ececec",
+                            background="#3ca253", foreground="#000000", highlightbackground="#3ca253",
+                            highlightcolor="#000000", length="566", orient="horizontal", troughcolor="#3ca253")
     scale_volume.place(relx=0.033, rely=0.222, relheight=0.681, relwidth=0.943)
-    scale_volume.configure(activebackground="#ececec")
-    scale_volume.configure(background="#3ca253")
-    scale_volume.configure(foreground="#000000")
-    scale_volume.configure(highlightbackground="#3ca253")
-    scale_volume.configure(highlightcolor="#000000")
-    scale_volume.configure(length="566")
-    scale_volume.configure(orient="horizontal")
-    scale_volume.configure(troughcolor="#3ca253")
     scale_volume.set(50)
 
-    bouton_retour = tk.Button(top, command=top.destroy)
+    bouton_retour = tk.Button(top, text='''Retour''', command=top.destroy, activebackground="#ececec",
+                              activeforeground="#000000", background="#3ca253", disabledforeground="#a3a3a3",
+                              font="-family {Segoe UI} -size 14", foreground="#000000", highlightbackground="#d9d9d9",
+                              highlightcolor="black", pady="0")
     bouton_retour.place(relx=0.359, rely=0.813, height=64, width=177)
-    bouton_retour.configure(activebackground="#ececec")
-    bouton_retour.configure(activeforeground="#000000")
-    bouton_retour.configure(background="#3ca253")
-    bouton_retour.configure(disabledforeground="#a3a3a3")
-    bouton_retour.configure(font="-family {Segoe UI} -size 14")
-    bouton_retour.configure(foreground="#000000")
-    bouton_retour.configure(highlightbackground="#d9d9d9")
-    bouton_retour.configure(highlightcolor="black")
-    bouton_retour.configure(pady="0")
-    bouton_retour.configure(text='''Retour''')
 
-    label_options = tk.Label(top)
+    label_options = tk.Label(top, text='''Options :''', background="#7dffbe", disabledforeground="#a3a3a3",
+                             font="-family {Segoe UI} -size 14 -weight bold -underline 1", foreground="#000000")
     label_options.place(relx=0.328, rely=0.021, height=51, width=204)
-    label_options.configure(background="#7dffbe")
-    label_options.configure(disabledforeground="#a3a3a3")
-    label_options.configure(font="-family {Segoe UI} -size 14 -weight bold -underline 1")
-    label_options.configure(foreground="#000000")
-    label_options.configure(text='''Options :''')
 
 
 file = ["0"]
