@@ -7,8 +7,6 @@ Le jeu se déroule comme un livre-jeu, vous allez devoir faire divers choix qui 
 
 Le jeu est divisé en deux modes : le mode « édition » et le mode « jeu ».
 Le mode « édition » vous permettra de confectionner votre jeu de A à Z. Armes, accessoires, niveaux d’expérience, caractéristiques de base du personnage, scénarios… absolument tout est modifiable à votre guise.
-
-
 La première chose à faire avant de commencer à éditer son histoire est de lui choisir un nom. Une fois ceci fait, 4 options s'offrent à vous : Stats, Monstres, Armes et Dialogues.
 
 - Dans l'onglet Stats, vous pourrez choisir grâce aux barres de défilement les valeurs d'attaque, défense, agilité et chance avec lesquels votre personnage débutera. Le nombre de points à distribuer est limité à 30. Répartissez-les avec parcimonie.
@@ -21,7 +19,7 @@ La première chose à faire avant de commencer à éditer son histoire est de lu
 
 - Dans l'onglet Armes, le fonctionnement est presque le même que pour l'onglet Monstres. IL faudra choisir le nom de l'arme, sa description, le type de stats qu'elle augmente et de combien, ainsi que son image.
 
-- Dans l'onglet Dialogues, vous pourrez choisir les questions qui seront posées dans l'histoire, ainsi que les différents choix à ces questions ainsi que leurs conséquences.
+- Dans l'onglet Dialogues, vous pourrez choisir les questions qui seront posées dans l'histoire, les différents choix à ces questions ainsi que leurs conséquences.
 
 N’oubliez surtout pas de sauvegarder à chaque étape, et voilà, votre merveilleuse histoire est prête à être jouée ! 
 
