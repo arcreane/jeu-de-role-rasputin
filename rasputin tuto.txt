@@ -4,10 +4,21 @@ Bienvenue dans DUALCENT, le jeu qui vous permet de créer et de jouer à votre p
 
 Le jeu se déroule comme un livre-jeu, vous allez devoir faire divers choix qui affecteront directement votre progression dans le jeu.  Monstres, combats, morts et victoires, DUALCENT vous permet de profiter d’une expérience riche en émotions et frissons et ce en étant totalement personnalisable.
 
-Le jeu est divisé en deux modes : le mode « édition » et le mode « jeu ».
-Le mode « édition » vous permettra de confectionner votre jeu de A à Z. Armes, accessoires, niveaux d’expérience, caractéristiques de base du personnage, scénarios… absolument tout est modifiable à votre guise. N’oubliez surtout pas de sauvegarder et voilà, votre merveilleuse histoire est prête à être jouée ! 
 
-Le mode « jeu » constitue la principale attraction de DUALCENT. Une fois dans le menu, vous aurez le choix entre démarrer une nouvelle partie à partir d’une histoire créée au préalable, ou bien charger une partie en cours de progression. A vous les dizaines d'heures de jeu enflammées et pleines d'action !
+Le jeu est divisé en deux modes : le mode « édition » et le mode « jeu ».
+Le mode « édition » vous permettra de confectionner votre jeu de A à Z. Armes, accessoires, niveaux d’expérience, caractéristiques de base du personnage, scénarios… absolument tout est modifiable à votre guise.
+
+La première chose à faire avant de commencer à éditer son histoire est de lui choisir un nom. Une fois ceci fait, 4 options s'offrent à vous : Stats, Monstres, Armes et DIalogues.
+
+- Dans l'onglet Stats, vous pourrez choisir grâce aux barres de défilement les valeurs d'attaque, défense, agilité et chance avec lesquels votre personnage débutera. Le nombre de points à distribuer est limiter à 30. Repartissez-les avec parcimonie.
+- Dans l'onglet Monstres, vous pourrez crééer vos propres monstres. Ainsi, il faudra inscrire leurs noms, nombres de PV, les dégâts qu'ils infligent, leur image et leur chemin.
+- Dans l'onglet Armes, le fonctionnement est quasiment que le même que pour l'onglet Monstres. IL faudra choisir le nom de l'arme, sa description, le type de stats qu'elle augmente et de combien de valeurs, ainsi que son image.
+- Dans l'onglet Dialogues, vous pourez choisir les questions qui seront poser dans l'histoires, ainsi que les différents choix à ses questions et leurs conséquences.
+
+N’oubliez surtout pas de sauvegarder et voilà, votre merveilleuse histoire est prête à être jouée ! 
+
+
+Le mode « jeu » constitue la principale attraction de DUALCENT. Une fois dans le menu, vous aurez le choix entre démarrer une nouvelle partie à partir d’une histoire créée au préalable, ou bien charger une partie en cours de progression.
 
 Il ne vous reste plus qu’à faire les bons choix et arriver au bout de votre propre aventure... Bonne chance !
 
