@@ -12,7 +12,7 @@ Frame1 = tk.Frame(root, relief='groove', borderwidth="2", background="#fc9403")
 Frame1.place(relx=0.046, rely=0.264, relheight=0.632, relwidth=0.904)
 
 
-class Monstre :
+#class Monstre :
     def __init__(self, niveau, PV_monstre):
         self.PV_monstre = 100 * niveau
         self.attaque = 20 * niveau
@@ -29,7 +29,7 @@ class Monstre :
             format(dégats)
             PV_hero -= dégats
 
-class Hero:
+#class Hero:
 
     def __init__(self, nom_hero, attaque_hero, PV_hero):
         self.PV = PV_hero
