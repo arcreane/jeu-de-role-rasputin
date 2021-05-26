@@ -17,18 +17,22 @@ DegatsMonstre = niveauMonstre * 2
 DegatsHero = 5 + Attack
 Agilite = 5
 Luck = 10
+titre = 0
 
 def Attaquer():
-    global PvMonstre,PvHero,Luck,Agilite,DegatsHero,DegatsMonstre
+    global PvMonstre,PvHero,Luck,Agilite,DegatsHero,DegatsMonstre,titre,titre_label,pv_label
     ToucherHero = random.randint(1, 200)  # Chance que tu touche le monstre + Chance que tu l'esquive
     ToucherMonstre = random.randint(1, 200)
+    if titre == 1 :
+       titre_label.destroy()
+       pv_label.destroy()
 
     if (ToucherHero < (80 + Luck)):
         PvMonstre = (PvMonstre - DegatsHero)
 
     if (ToucherMonstre < (80 - Agilite)):
         PvHero = (PvHero - DegatsMonstre)
-
+    titre = 1
     titre_label = tk.Label(master, text=PvMonstre, background="#fc9403",
                            # Affichage PV Monstre et hero ( flemme de positionner pour l'instant )
                            disabledforeground="#a3a3a3",
