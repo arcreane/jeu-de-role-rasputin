@@ -25,7 +25,6 @@ def Attaquer():
 
     if (ToucherHero < (80 + Luck)):
         PvMonstre = (PvMonstre - DegatsHero)
-        print(PvMonstre)
 
     if (ToucherMonstre < (80 - Agilite)):
         PvHero = (PvHero - DegatsMonstre)
