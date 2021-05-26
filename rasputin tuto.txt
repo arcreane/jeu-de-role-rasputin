@@ -4,10 +4,12 @@ Bienvenue dans DUALCENT, le jeu qui vous permet de créer et de jouer à votre p
 
 Le jeu se déroule comme un livre-jeu, vous allez devoir faire divers choix qui affecteront directement votre progression dans le jeu.  Monstres, combats, morts et victoires, DUALCENT vous permet de profiter d’une expérience riche en émotions et frissons et ce en étant totalement personnalisable.
 
-
 Le jeu est divisé en deux modes : le mode « édition » et le mode « jeu ».
 Le mode « édition » vous permettra de confectionner votre jeu de A à Z. Armes, accessoires, niveaux d’expérience, caractéristiques de base du personnage, scénarios… absolument tout est modifiable à votre guise.
-La première chose à faire avant de commencer à éditer son histoire est de lui choisir un nom. Une fois ceci fait, 4 options s'offrent à vous : Stats, Monstres, Armes et Dialogues.
+
+
+
+- La première chose à faire avant de commencer à éditer son histoire est de lui choisir un nom. Une fois ceci fait, 4 options s'offrent à vous : Stats, Monstres, Armes et Dialogues.
 
 - Dans l'onglet Stats, vous pourrez choisir grâce aux barres de défilement les valeurs d'attaque, défense, agilité et chance avec lesquels votre personnage débutera. Le nombre de points à distribuer est limité à 30. Répartissez-les avec parcimonie.
       L'Attaque correspond au nombre de dégâts que vous infligerez aux différents monstres.
