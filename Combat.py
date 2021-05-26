@@ -8,12 +8,12 @@ master.minsize(width="640", height="480")  # taille min
 master.maxsize(width="640", height="480")  # taille max
 
 # Stats randoms pour l'instant Ã  lier avec les stats du hero de l'editeurs
-Attack = 10
-Defense = 10
+Attack = 8
+Defense = 7
 niveauMonstre = random.randint(1, 20)
 PvHero = 10 + Defense * 10
-PvMonstre = niveauMonstre * 20
-DegatsMonstre = niveauMonstre * 2
+PvMonstre = niveauMonstre * 10
+DegatsMonstre = niveauMonstre
 DegatsHero = 5 + Attack
 Agilite = 5
 Luck = 10
@@ -27,11 +27,19 @@ def Attaquer():
        titre_label.destroy()
        pv_label.destroy()
 
-    if (ToucherHero < (80 + Luck)):
+    if (ToucherHero < (70 + Luck)):
         PvMonstre = (PvMonstre - DegatsHero)
-
-    if (ToucherMonstre < (80 - Agilite)):
+    if PvMonstre < 1 :
+        print("tu gagnes")
+        #Quitter le combat
+        master.destroy()
+    if (ToucherMonstre < (70 - Agilite)):
         PvHero = (PvHero - DegatsMonstre)
+    if PvHero < 1 :
+        #fin du jeu
+        print("t'es mort")
+        master.destroy()
+
     titre = 1
     titre_label = tk.Label(master, text=PvMonstre, background="#fc9403",
                            # Affichage PV Monstre et hero ( flemme de positionner pour l'instant )
@@ -49,14 +57,18 @@ def Attaquer():
 
 
 def Fuir():
-    global PvMonstre,PvHero,Luck,Agilite,DegatsHero,DegatsMonstre
+    global PvMonstre,PvHero,Luck,Agilite,DegatsHero,DegatsMonstre,titre,titre_label,pv_label
     Partir = random.randint(1, 200)
     ToucherMonstre = random.randint(1, 200)
-    if (Partir < 120 - Luck):  # Chance de fuir
+    if titre == 1 :
+       titre_label.destroy()
+       pv_label.destroy()
+    if (Partir < 130 - Luck):  # Chance de fuir
         print("fuir")
     else:
-        if (ToucherMonstre < 80 - Agilite):
+        if (ToucherMonstre < 65 - (Agilite+Luck)):
             PvHero = PvHero - DegatsMonstre
+            titre = 1
             titre_label = tk.Label(master, text=PvMonstre, background="#fc9403",
                                    # Affichage PV Monstre et hero ( flemme de positionner pour l'instant )
                                    disabledforeground="#a3a3a3",
