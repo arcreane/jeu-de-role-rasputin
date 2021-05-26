@@ -8,14 +8,22 @@ Le jeu se déroule comme un livre-jeu, vous allez devoir faire divers choix qui 
 Le jeu est divisé en deux modes : le mode « édition » et le mode « jeu ».
 Le mode « édition » vous permettra de confectionner votre jeu de A à Z. Armes, accessoires, niveaux d’expérience, caractéristiques de base du personnage, scénarios… absolument tout est modifiable à votre guise.
 
-La première chose à faire avant de commencer à éditer son histoire est de lui choisir un nom. Une fois ceci fait, 4 options s'offrent à vous : Stats, Monstres, Armes et DIalogues.
 
-- Dans l'onglet Stats, vous pourrez choisir grâce aux barres de défilement les valeurs d'attaque, défense, agilité et chance avec lesquels votre personnage débutera. Le nombre de points à distribuer est limiter à 30. Repartissez-les avec parcimonie.
-- Dans l'onglet Monstres, vous pourrez crééer vos propres monstres. Ainsi, il faudra inscrire leurs noms, nombres de PV, les dégâts qu'ils infligent, leur image et leur chemin.
-- Dans l'onglet Armes, le fonctionnement est quasiment que le même que pour l'onglet Monstres. IL faudra choisir le nom de l'arme, sa description, le type de stats qu'elle augmente et de combien de valeurs, ainsi que son image.
-- Dans l'onglet Dialogues, vous pourez choisir les questions qui seront poser dans l'histoires, ainsi que les différents choix à ses questions et leurs conséquences.
+La première chose à faire avant de commencer à éditer son histoire est de lui choisir un nom. Une fois ceci fait, 4 options s'offrent à vous : Stats, Monstres, Armes et Dialogues.
 
-N’oubliez surtout pas de sauvegarder et voilà, votre merveilleuse histoire est prête à être jouée ! 
+- Dans l'onglet Stats, vous pourrez choisir grâce aux barres de défilement les valeurs d'attaque, défense, agilité et chance avec lesquels votre personnage débutera. Le nombre de points à distribuer est limité à 30. Répartissez-les avec parcimonie.
+      L'Attaque correspond au nombre de dégâts que vous infligerez aux différents monstres.
+      La Défense correspond à votre résistance aux coups que vous prendrez. 
+      L'Agilité correspond à vos chances d'esquiver un coup porté par un monstre et augmente vos chances de fuir si l'ennemi est trop puissant pour vous. 
+      La Chance correspond à votre chance de ne pas prendre un coup ainsi qu'à votre chance de fuir.
+      
+- Dans l'onglet Monstres, vous pourrez crééer vos propres monstres. Ainsi, il faudra inscrire leur nom, nombre de Points de Vie, les dégâts qu'ils infligent, leur image et leur chemin.
+
+- Dans l'onglet Armes, le fonctionnement est presque le même que pour l'onglet Monstres. IL faudra choisir le nom de l'arme, sa description, le type de stats qu'elle augmente et de combien, ainsi que son image.
+
+- Dans l'onglet Dialogues, vous pourrez choisir les questions qui seront posées dans l'histoire, ainsi que les différents choix à ces questions ainsi que leurs conséquences.
+
+N’oubliez surtout pas de sauvegarder à chaque étape, et voilà, votre merveilleuse histoire est prête à être jouée ! 
 
 
 Le mode « jeu » constitue la principale attraction de DUALCENT. Une fois dans le menu, vous aurez le choix entre démarrer une nouvelle partie à partir d’une histoire créée au préalable, ou bien charger une partie en cours de progression.
