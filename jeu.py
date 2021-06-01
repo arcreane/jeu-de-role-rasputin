@@ -4,7 +4,7 @@ from tkinter import ttk
 import csv
 import random
 
-image_monstre = ""
+image_monstre = []
 
 titre = []
 choix1 = []
@@ -17,15 +17,16 @@ Defense = 0
 Agilite = 0
 Luck = 0
 PvHero = 100
-PvMonstre = 0
-DegatsMonstre = 0
-nom_monstre = ""
+PvMonstre = []
+DegatsMonstre = []
+nom_monstre = []
 armes = []
 degats_armes = []
+monstre_index = []
 
 
 def get_data(histoire):
-    global titre, image_monstre, choix1, choix2, goto1, goto2, Attack, Defense, Agilite, Luck, PvMonstre, DegatsMonstre, nom_monstre, armes, degats_armes, PvHero, PvMonstre
+    global titre, image_monstre, monstre_index, choix1, choix2, goto1, goto2, Attack, Defense, Agilite, Luck, PvMonstre, DegatsMonstre, nom_monstre, armes, degats_armes, PvHero, PvMonstre
 
     f = open(histoire, "rt", encoding='utf-8-sig')
 
@@ -51,17 +52,19 @@ def get_data(histoire):
         elif row[0] == 'chance':
             Luck = row[1]
         elif row[0] == 'pvmon':
-            PvMonstre = row[1]
+            PvMonstre = row[1:]
         elif row[0] == 'degatsmon':
-            DegatsMonstre = row[1]
+            DegatsMonstre = row[1:]
         elif row[0] == 'imgmon':
-            image_monstre = row[2]
+            image_monstre = row[1:]
         elif row[0] == 'nommon':
-            nom_monstre = row[1]
+            nom_monstre = row[1:]
         elif row[0] == 'nom_arme':
             armes = row[1:]
         elif row[0] == 'boost_arme':
             degats_armes = row[1:]
+        elif row[0] == 'monstre_histoire':
+            monstre_index = row[1:]
     # fermeture du fichier csv
     f.close()
 
@@ -222,10 +225,13 @@ def begin_game(index):  # fonction du "moteur de jeu"
             Label3.place_forget()
             Button2.place_forget()
 
-        if "attaque" in str(titre[index]):
-            create_attaque_window()
+        if len(monstre_index[index]) != 0:
+            index_imgmon = monstre_index.index(str(monstre_index[index]))
+            print(index_imgmon)
+            create_attaque_window(index_imgmon)
 
-    def create_attaque_window():
+
+    def create_attaque_window(index_touse):
         global PvHero, PvMonstre
 
         attaque = tk.Toplevel(root)
@@ -245,7 +251,7 @@ def begin_game(index):  # fonction du "moteur de jeu"
                 print("perdu")
                 Button3.place(relx=0.37, rely=0.833, height=84, width=227)
                 Button3.configure(command=root.destroy)
-            elif int(PvMonstre) <= 0:
+            elif int(PvMonstre[index]) <= 0:
                 print("gagné")
                 Button3.place(relx=0.37, rely=0.833, height=84, width=227)
                 Button3.configure(command=attaque.destroy)
@@ -253,11 +259,11 @@ def begin_game(index):  # fonction du "moteur de jeu"
 
                 if Toucher > (70 + int(Luck) + int(Attack) + int(Agilite) - int(Defense)):
                     PvMonstre = (int(PvMonstre) - int(degats_armes[index]))
-                    Scale2.set(PvMonstre)
+                    Scale2.set(PvMonstre[index])
                     if int(PvMonstre) < 1:
                         print("tu gagnes")
                 elif Toucher < (70 + int(Agilite) + int(Luck) - int(Defense) + int(Attack)):
-                    PvHero = (int(PvHero) - int(DegatsMonstre))
+                    PvHero = (int(PvHero) - int(DegatsMonstre[index]))
                     Scale1.set(PvHero)
                     if int(PvHero) < 1:
                         # fin du jeu
@@ -289,6 +295,8 @@ def begin_game(index):  # fonction du "moteur de jeu"
                           foreground="#000000")
         Label1.place(relx=0.037, rely=0.028, height=90, width=994)
 
+        monstre_image = tk.PhotoImage(master=attaque, file=image_monstre[index]).zoom(2)
+
         Canvas1 = tk.Canvas(attaque, background="#d9d9d9", borderwidth="2", insertbackground="black",
                             selectbackground="blue",
                             selectforeground="white")
@@ -297,11 +305,11 @@ def begin_game(index):  # fonction du "moteur de jeu"
         width = Canvas1.winfo_reqwidth()
         height = Canvas1.winfo_reqheight()
 
-        monstre_image = tk.PhotoImage(file=image_monstre, master=attaque).zoom(2)
+
 
         Canvas1.create_image(width / 2, height / 2, image=monstre_image)
 
-        Label3 = tk.Label(Canvas1, text="Monstre : " + nom_monstre, background="#d9d9d9", disabledforeground="#a3a3a3",
+        Label3 = tk.Label(Canvas1, text="Monstre : " + nom_monstre[index], background="#d9d9d9", disabledforeground="#a3a3a3",
                           foreground="#000000")
         Label3.place(relx=0.029, rely=0.834, height=31, width=324)
 
@@ -327,7 +335,6 @@ def begin_game(index):  # fonction du "moteur de jeu"
                             background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000",
                             highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
 
-
         TCombobox1 = ttk.Combobox(attaque, values=armes)
         TCombobox1.place(relx=0.093, rely=0.611, relheight=0.057, relwidth=0.206)
         TCombobox1.configure(takefocus="")
@@ -339,12 +346,12 @@ def begin_game(index):  # fonction du "moteur de jeu"
         Scale1.place(relx=0.056, rely=0.125, relwidth=0.414, relheight=0.0, height=42, bordermode='ignore')
         Scale1.set(PvHero)
 
-        Scale2 = tk.Scale(attaque, from_=0.0, to=PvMonstre, activebackground="#ececec", background="#d9d9d9",
+        Scale2 = tk.Scale(attaque, from_=0.0, to=PvMonstre[index], activebackground="#ececec", background="#d9d9d9",
                           foreground="#000000", highlightbackground="#d9d9d9", highlightcolor="black",
                           orient="horizontal",
                           troughcolor="#ff0000")
         Scale2.place(relx=0.602, rely=0.125, relwidth=0.32, relheight=0.0, height=42, bordermode='ignore')
-        Scale2.set(PvMonstre)
+        Scale2.set(PvMonstre[index])
 
         # attaque.mainloop()
 
