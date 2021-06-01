@@ -24,6 +24,7 @@ armes = []
 degats_armes = []
 monstre_index = []
 
+pvmonstre_attaque = ""
 
 def get_data(histoire):
     global titre, image_monstre, monstre_index, choix1, choix2, goto1, goto2, Attack, Defense, Agilite, Luck, PvMonstre, DegatsMonstre, nom_monstre, armes, degats_armes, PvHero, PvMonstre
@@ -226,20 +227,21 @@ def begin_game(index):  # fonction du "moteur de jeu"
             Button2.place_forget()
 
         if len(monstre_index[index]) != 0:
-            index_imgmon = monstre_index.index(str(monstre_index[index]))
+            index_imgmon = nom_monstre.index(monstre_index[index])
             print(index_imgmon)
             create_attaque_window(index_imgmon)
 
-
     def create_attaque_window(index_touse):
-        global PvHero, PvMonstre
+        global PvHero, PvMonstre, pvmonstre_attaque
 
         attaque = tk.Toplevel(root)
         attaque.geometry("1080x720")
         attaque.resizable(0, 0)
 
+        pvmonstre_attaque = int(PvMonstre[index_touse])
+
         def Attaquer(arme):
-            global PvMonstre, PvHero, Luck, Agilite, DegatsMonstre
+            global pvmonstre_attaque, PvHero, Luck, Agilite, DegatsMonstre
             Toucher = random.randint(1, 200)  # Chance que tu touche le monstre + Chance que tu l'esquive
 
             # print(ToucherHero, ToucherMonstre)
@@ -247,34 +249,26 @@ def begin_game(index):  # fonction du "moteur de jeu"
 
             index = armes.index(arme)
 
-            if int(PvHero) <= 0:
-                print("perdu")
-                Button3.place(relx=0.37, rely=0.833, height=84, width=227)
-                Button3.configure(command=root.destroy)
-            elif int(PvMonstre[index]) <= 0:
-                print("gagné")
-                Button3.place(relx=0.37, rely=0.833, height=84, width=227)
-                Button3.configure(command=attaque.destroy)
-            else:
+            if Toucher > (70 + int(Luck) + int(Attack) + int(Agilite) - int(Defense)):
+                pvmonstre_attaque = (pvmonstre_attaque - int(degats_armes[index]))
+                Scale2.set(pvmonstre_attaque)
+                if int(pvmonstre_attaque) < 1:
+                    print("tu gagnes")
+            elif Toucher < (70 + int(Agilite) + int(Luck) - int(Defense) + int(Attack)):
+                PvHero = (int(PvHero) - int(DegatsMonstre[index]))
+                Scale1.set(PvHero)
+                if int(PvHero) < 1:
+                    # fin du jeu
+                    print("t es mort")
 
-                if Toucher > (70 + int(Luck) + int(Attack) + int(Agilite) - int(Defense)):
-                    PvMonstre = (int(PvMonstre) - int(degats_armes[index]))
-                    Scale2.set(PvMonstre[index])
-                    if int(PvMonstre) < 1:
-                        print("tu gagnes")
-                elif Toucher < (70 + int(Agilite) + int(Luck) - int(Defense) + int(Attack)):
-                    PvHero = (int(PvHero) - int(DegatsMonstre[index]))
-                    Scale1.set(PvHero)
-                    if int(PvHero) < 1:
-                        # fin du jeu
-                        print("t es mort")
+            Label2.configure(text="pv monstre :" + str(pvmonstre_attaque) + "\npv hero :" + str(PvHero))
 
-            Label2.configure(text="pv monstre :" + str(PvMonstre) + "\npv hero :" + str(PvHero))
+            check_life()
 
-            return PvMonstre, PvHero
+            return pvmonstre_attaque, PvHero
 
         def Fuir():
-            global PvMonstre, PvHero, Luck, Agilite, DegatsHero, DegatsMonstre, titre, titre_label, pv_label
+            global pvmonstre_attaque, PvHero, Luck, Agilite, DegatsHero, DegatsMonstre, titre, titre_label, pv_label
             Partir = random.randint(1, 200)
             ToucherMonstre = random.randint(1, 200)
 
@@ -283,19 +277,33 @@ def begin_game(index):  # fonction du "moteur de jeu"
                 attaque.destroy()
             else:  # sinon apres une tentative de fuite qui a echouee, le personnage se fait toucher par le monstre
                 if ToucherMonstre < 65 - (int(Agilite) + int(Luck)):
-                    PvHero = int(PvHero) - int(DegatsMonstre)
+                    PvHero = int(PvHero) - int(DegatsMonstre[index])
                     print("impossible")
                     Scale1.set(PvHero)
-            Label2.configure(text="pv monstre :" + str(PvMonstre) + "\npv hero :" + str(PvHero))
+            Label2.configure(text="pv monstre :" + str(pvmonstre_attaque) + "\npv hero :" + str(PvHero))
 
-            return PvMonstre, PvHero
+            return pvmonstre_attaque, PvHero
+
+        def check_life():
+            if int(PvHero) <= 0:
+                print("perdu")
+                Button3.place(relx=0.37, rely=0.833, height=84, width=227)
+                Button3.configure(command=root.destroy)
+                Button1.configure(state="disabled")
+                Button2.configure(state="disabled")
+            elif int(pvmonstre_attaque) <= 0:
+                print("gagné")
+                Button3.place(relx=0.37, rely=0.833, height=84, width=227)
+                Button3.configure(command=attaque.destroy)
+                Button1.configure(state="disabled")
+                Button2.configure(state="disabled")
 
         Label1 = tk.Label(attaque, text='''Vous avez été attaqué par un monstre :''', background="#d9d9d9",
                           disabledforeground="#a3a3a3", font="-family {Segoe UI} -size 17 -weight bold -underline 1",
                           foreground="#000000")
         Label1.place(relx=0.037, rely=0.028, height=90, width=994)
 
-        monstre_image = tk.PhotoImage(master=attaque, file=image_monstre[index]).zoom(2)
+        monstre_image = tk.PhotoImage(master=attaque, file=image_monstre[index_touse]).zoom(2)
 
         Canvas1 = tk.Canvas(attaque, background="#d9d9d9", borderwidth="2", insertbackground="black",
                             selectbackground="blue",
@@ -305,11 +313,9 @@ def begin_game(index):  # fonction du "moteur de jeu"
         width = Canvas1.winfo_reqwidth()
         height = Canvas1.winfo_reqheight()
 
-
-
         Canvas1.create_image(width / 2, height / 2, image=monstre_image)
 
-        Label3 = tk.Label(Canvas1, text="Monstre : " + nom_monstre[index], background="#d9d9d9", disabledforeground="#a3a3a3",
+        Label3 = tk.Label(Canvas1, text="Monstre : " + nom_monstre[index_touse], background="#d9d9d9", disabledforeground="#a3a3a3",
                           foreground="#000000")
         Label3.place(relx=0.029, rely=0.834, height=31, width=324)
 
@@ -346,14 +352,14 @@ def begin_game(index):  # fonction du "moteur de jeu"
         Scale1.place(relx=0.056, rely=0.125, relwidth=0.414, relheight=0.0, height=42, bordermode='ignore')
         Scale1.set(PvHero)
 
-        Scale2 = tk.Scale(attaque, from_=0.0, to=PvMonstre[index], activebackground="#ececec", background="#d9d9d9",
+        Scale2 = tk.Scale(attaque, from_=0.0, to=pvmonstre_attaque, activebackground="#ececec", background="#d9d9d9",
                           foreground="#000000", highlightbackground="#d9d9d9", highlightcolor="black",
                           orient="horizontal",
                           troughcolor="#ff0000")
         Scale2.place(relx=0.602, rely=0.125, relwidth=0.32, relheight=0.0, height=42, bordermode='ignore')
-        Scale2.set(PvMonstre[index])
+        Scale2.set(pvmonstre_attaque)
 
-        # attaque.mainloop()
+        attaque.mainloop()
 
     debut_histoire()
 
