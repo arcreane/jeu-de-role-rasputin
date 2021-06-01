@@ -4,8 +4,12 @@ from tkinter import ttk
 import csv
 import random
 
-liste_herotouche = ["Ouch, cela a du faire mal", "Bravo !", "Vous avez une force surhumaine !", "C'est génial, continuez comme ca !"]
-liste_monstretouche = ["Aie, vous avez du prendre cher !", "Ce monstre est très puissant", "Cette attaque est meurtrière", "Le monstre vous a bien eu !"]
+liste_herotouche = ["Ouch, cela a du faire mal", "Bravo !", "Vous avez une force surhumaine !",
+                    "C'est génial, continuez comme ca !", "Le monstre a eu du mal à se défendre face à vous !",
+                    "Votre attaque est destructrice !"]
+liste_monstretouche = ["Aie, vous avez du prendre cher !", "L'attaque de ce monstre est très puissante",
+                       "son attaque est meurtrière", "Le monstre vous a bien eu !",
+                       "Cette attaque n'a pas d'effets sur ce monstre!"]
 
 image_monstre = []
 
@@ -268,7 +272,7 @@ def begin_game(index):  # fonction du "moteur de jeu"
                 if int(PvHero) < 1:
                     print("t es mort")
 
-            #Label2.configure(text="pv monstre :" + str(pvmonstre_attaque) + "\npv hero :" + str(PvHero))
+            # Label2.configure(text="pv monstre :" + str(pvmonstre_attaque) + "\npv hero :" + str(PvHero))
 
             check_life()
 
@@ -285,13 +289,16 @@ def begin_game(index):  # fonction du "moteur de jeu"
                 Button3.configure(command=attaque.destroy)
                 Button1.configure(state="disabled")
                 Button2.configure(state="disabled")
+                Label2.configure(
+                    text="Vous avez pris la fuite, quel lache.\nPar contre, vous avez évité de mourrir, c'est bien !")
             else:  # sinon apres une tentative de fuite qui a echouee, le personnage se fait toucher par le monstre
                 if ToucherMonstre < 65 - (int(Agilite) + int(Luck)):
                     PvHero = int(PvHero) - int(DegatsMonstre[index])
-                    Label2.configure(text=("Vous n'avez pas reussi a vous echapper\n" + random.choice(liste_monstretouche)))
+                    Label2.configure(
+                        text=("Vous n'avez pas reussi a vous echapper\n" + random.choice(liste_monstretouche)))
                     print("impossible")
                     Scale1.set(PvHero)
-            #Label2.configure(text="pv monstre :" + str(pvmonstre_attaque) + "\npv hero :" + str(PvHero))
+            # Label2.configure(text="pv monstre :" + str(pvmonstre_attaque) + "\npv hero :" + str(PvHero))
 
             return pvmonstre_attaque, PvHero
 
@@ -323,8 +330,9 @@ def begin_game(index):  # fonction du "moteur de jeu"
 
         width = Canvas1.winfo_reqwidth()
         height = Canvas1.winfo_reqheight()
+        print(width, height)
 
-        Canvas1.create_image(width / 2, height / 2, image=monstre_image)
+        image_mstre = Canvas1.create_image(width / 2, height / 2, image=monstre_image)
 
         Label3 = tk.Label(Canvas1, text="Monstre : " + nom_monstre[index_touse], background="#d9d9d9",
                           disabledforeground="#a3a3a3",
