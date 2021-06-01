@@ -4,6 +4,9 @@ from tkinter import ttk
 import csv
 import random
 
+liste_herotouche = ["Ouch, cela a du faire mal", "Bravo !", "Vous avez une force surhumaine !", "C'est génial, continuez comme ca !"]
+liste_monstretouche = ["Aie, vous avez du prendre cher !", "Ce monstre est très puissant", "Cette attaque est meurtrière", "Le monstre vous a bien eu !"]
+
 image_monstre = []
 
 titre = []
@@ -25,6 +28,7 @@ degats_armes = []
 monstre_index = []
 
 pvmonstre_attaque = ""
+
 
 def get_data(histoire):
     global titre, image_monstre, monstre_index, choix1, choix2, goto1, goto2, Attack, Defense, Agilite, Luck, PvMonstre, DegatsMonstre, nom_monstre, armes, degats_armes, PvHero, PvMonstre
@@ -67,6 +71,10 @@ def get_data(histoire):
         elif row[0] == 'monstre_histoire':
             monstre_index = row[1:]
     # fermeture du fichier csv
+
+    for i in range(len(titre)):
+        titre[i] = titre[i].replace("\\n", "\n")
+
     f.close()
 
 
@@ -77,7 +85,7 @@ root.title("Game")
 root.configure(background="#2e2b2a")
 
 
-def clean_window():
+def clean_window():  # fonction pour clear les widgets présents sur la fenetre principale
     for widget in root.winfo_children():
         widget.destroy()
 
@@ -226,12 +234,13 @@ def begin_game(index):  # fonction du "moteur de jeu"
             Label3.place_forget()
             Button2.place_forget()
 
-        if len(monstre_index[index]) != 0:
+        if len(monstre_index[
+                   index]) != 0:  # s il y a un monstre à l'etape choisie, alors on affiche une nouvelle fenetre qui va servir pour l'attaque
             index_imgmon = nom_monstre.index(monstre_index[index])
             print(index_imgmon)
             create_attaque_window(index_imgmon)
 
-    def create_attaque_window(index_touse):
+    def create_attaque_window(index_touse):  # fonction pour afficher la fenetre qui sert pour l'attaque
         global PvHero, PvMonstre, pvmonstre_attaque
 
         attaque = tk.Toplevel(root)
@@ -240,51 +249,53 @@ def begin_game(index):  # fonction du "moteur de jeu"
 
         pvmonstre_attaque = int(PvMonstre[index_touse])
 
-        def Attaquer(arme):
+        def Attaquer(arme):  # fonction pour connaitre les pv du hero et du monstre si l'on appuie sur attaquer
             global pvmonstre_attaque, PvHero, Luck, Agilite, DegatsMonstre
             Toucher = random.randint(1, 200)  # Chance que tu touche le monstre + Chance que tu l'esquive
-
-            # print(ToucherHero, ToucherMonstre)
-            print(Toucher)
 
             index = armes.index(arme)
 
             if Toucher > (70 + int(Luck) + int(Attack) + int(Agilite) - int(Defense)):
                 pvmonstre_attaque = (pvmonstre_attaque - int(degats_armes[index]))
                 Scale2.set(pvmonstre_attaque)
+                Label2.configure(text=random.choice(liste_herotouche))
                 if int(pvmonstre_attaque) < 1:
                     print("tu gagnes")
             elif Toucher < (70 + int(Agilite) + int(Luck) - int(Defense) + int(Attack)):
                 PvHero = (int(PvHero) - int(DegatsMonstre[index]))
                 Scale1.set(PvHero)
+                Label2.configure(text=random.choice(liste_monstretouche))
                 if int(PvHero) < 1:
-                    # fin du jeu
                     print("t es mort")
 
-            Label2.configure(text="pv monstre :" + str(pvmonstre_attaque) + "\npv hero :" + str(PvHero))
+            #Label2.configure(text="pv monstre :" + str(pvmonstre_attaque) + "\npv hero :" + str(PvHero))
 
             check_life()
 
             return pvmonstre_attaque, PvHero
 
-        def Fuir():
+        def Fuir():  # fonction qui permet de fuir si l'on peut et si on peut pas, alors on pert des PV
             global pvmonstre_attaque, PvHero, Luck, Agilite, DegatsHero, DegatsMonstre, titre, titre_label, pv_label
             Partir = random.randint(1, 200)
             ToucherMonstre = random.randint(1, 200)
 
             if Partir < 130 - int(Luck):  # Chance de fuir
                 print("fuir")
-                attaque.destroy()
+                Button3.place(relx=0.37, rely=0.833, height=84, width=227)
+                Button3.configure(command=attaque.destroy)
+                Button1.configure(state="disabled")
+                Button2.configure(state="disabled")
             else:  # sinon apres une tentative de fuite qui a echouee, le personnage se fait toucher par le monstre
                 if ToucherMonstre < 65 - (int(Agilite) + int(Luck)):
                     PvHero = int(PvHero) - int(DegatsMonstre[index])
+                    Label2.configure(text=("Vous n'avez pas reussi a vous echapper\n" + random.choice(liste_monstretouche)))
                     print("impossible")
                     Scale1.set(PvHero)
-            Label2.configure(text="pv monstre :" + str(pvmonstre_attaque) + "\npv hero :" + str(PvHero))
+            #Label2.configure(text="pv monstre :" + str(pvmonstre_attaque) + "\npv hero :" + str(PvHero))
 
             return pvmonstre_attaque, PvHero
 
-        def check_life():
+        def check_life():  # fonction pour checker si les pv du heros ou du monstre sont nuls, et si c'est le cas, alors affiche le bouton quitter
             if int(PvHero) <= 0:
                 print("perdu")
                 Button3.place(relx=0.37, rely=0.833, height=84, width=227)
@@ -315,7 +326,8 @@ def begin_game(index):  # fonction du "moteur de jeu"
 
         Canvas1.create_image(width / 2, height / 2, image=monstre_image)
 
-        Label3 = tk.Label(Canvas1, text="Monstre : " + nom_monstre[index_touse], background="#d9d9d9", disabledforeground="#a3a3a3",
+        Label3 = tk.Label(Canvas1, text="Monstre : " + nom_monstre[index_touse], background="#d9d9d9",
+                          disabledforeground="#a3a3a3",
                           foreground="#000000")
         Label3.place(relx=0.029, rely=0.834, height=31, width=324)
 
