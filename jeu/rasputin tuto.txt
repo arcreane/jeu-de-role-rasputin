@@ -1,0 +1,54 @@
+DUALCENT
+
+Bienvenue dans DUALCENT, le jeu qui vous permet de créer et de jouer à votre propre histoire.
+
+Le jeu se déroule comme un livre-jeu, vous allez devoir faire divers choix qui affecteront directement votre progression dans le jeu.  Monstres, combats, morts et victoires, DUALCENT vous permet de profiter d’une expérience riche en émotions et frissons et ce en étant totalement personnalisable.
+
+Le jeu est divisé en deux modes : le mode « édition » et le mode « jeu ».
+Le mode « édition » vous permettra de confectionner votre jeu de A à Z. Armes, accessoires, caractéristiques de base du personnage, scénarios… absolument tout est modifiable à votre guise.
+
+
+
+- La première chose à faire avant de commencer à éditer son histoire est de lui choisir un nom. Une fois ceci fait, 4 options s'offrent à vous : Stats, Monstres, Armes et Dialogues.
+
+- Dans l'onglet Stats, vous pourrez choisir grâce aux barres de défilement les valeurs d'attaque, défense, agilité et chance avec lesquelles le personnage débutera. Le nombre de points à distribuer est limité à 30. Répartissez-les avec parcimonie.
+      L'Attaque correspond au nombre de dégâts que vous infligerez aux différents monstres.
+      La Défense correspond à votre résistance aux coups que vous recevrez. 
+      L'Agilité correspond à vos chances d'esquiver un coup porté par un monstre et augmente vos chances de fuir si l'ennemi est trop puissant pour vous. 
+      La Chance correspond à votre chance de ne pas prendre un coup ainsi qu'à votre chance de fuir.
+      Lorsque vous avez fini de choisir vos statistiques, il faut alors cliquer sur le bouton "Save" et ensuite sur le bouton "Retour".
+      
+- Dans l'onglet Monstres, vous pourrez créer vos propres monstres. 
+      Ainsi, il faudra inscrire leur nom, nombre de Points de Vie et les dégâts qu'ils infligent.
+      Vous pourrez aussi choisir une image au format png pour représenter chaque monstre.
+      Faites bien attention, vous ne pouvez pas supprimer les lignes pour le moment, donc ne cliquez pas sur le bouton "add" trop de fois. La suppression viendra dans une mise à jour future !
+      Lorsque vous avez fini de créer vos monstres, alors il vous faut cliquer sur le bouton "Save et retourner à la page précédente".
+
+- Dans l'onglet Armes, le fonctionnement est presque le même que pour l'onglet Monstres. 
+      Il faudra choisir le nom de l'arme, écrire sa description, et choisir le nombre de dégâts qu'elle va infliger aux monstres.
+      Vous pouvez choisir aussi une autre image pour chaque arme (actuellement l'image n'est pas utilisée)
+      Faites bien attention, vous ne pouvez pas supprimer les lignes pour le moment, donc ne cliquez pas sur le bouton "add" trop de fois. La suppression viendra dans une mise à jour future !
+      Lorsque vous avez fini de créer vos armes, alors il vous faut cliquer sur le bouton "Save et retourner à la page précédente”.
+
+- Dans l'onglet Dialogues, vous pourrez choisir les questions qui seront posées dans l'histoire, les différents choix à ces questions ainsi que leurs conséquences.
+      Nous vous conseillons d'abord de définir votre histoire à l'aide d'un tableau blanc en créant des boîtes pour chaque question et pour savoir exactement ou mèneront les différents choix (ce n'est pas obligatoire, mais cela sera plus simple par la suite pour créer les dialogues)
+      Dans le titre, vous pouvez mettre l'histoire avec les questions qui seront posées au joueur.
+      Dans les différents choix (choix1 et choix2), vous pouvez mettre ce que va faire l'utilisateur.
+      Dans les liens entre les questions (Lien vers 1 et Lien vers 2), il faut mettre "l'id" de la question qui est affiché à la gauche de la ligne où vous allez indiquer ce qu'il va se passer si l'utilisateur clique sur ce choix.
+      Si vous décidez que dans une question, il y a un monstre, alors vous pouvez choisir quel monstre sera présent dans l'histoire, et lors du jeu, cela ouvrira une fenêtre attaque pour que le joueur puisse combattre ce monstre.
+      Si vous voulez que lors du jeu il y ait un saut de ligne, alors dans le titre de votre question, il faut mettre "\n" (sans les guillemets) et il faut continuer votre histoire. Cela permettra au jeu de savoir qu'il faut aller à la ligne à ce moment.
+      Si vous voulez qu'un choix soit la fin de votre histoire, alors il faut que vous ajoutiez une nouvelle ligne et il faut que vous marquiez "fin" dans cette ligne (sans les guillemets et en minuscule), et le jeu saura que c'est la fin de votre histoire.
+      Faites bien attention, vous ne pouvez pas supprimer les lignes pour le moment, donc ne cliquez pas sur le bouton "add" trop de fois. La suppression viendra dans une mise à jour future !
+      Lorsque vous avez fini de créer les dialogues, alors il faut cliquer sur le bouton "Save et retourner à la page précédente".
+
+N’oubliez surtout pas de sauvegarder à chaque étape, et lorsque vous avez fini de créer votre histoire, vous pouvez alors cliquer sur le bouton "Quitter" et vous vous retrouverez sur le menu principal de DualCent.
+Et voilà, votre merveilleuse histoire est prête à être jouée ! 
+
+
+Le mode « jeu » constitue la principale attraction de DUALCENT. Une fois dans le menu, vous aurez le choix entre démarrer une nouvelle partie à partir d’une histoire créée au préalable, ou bien charger une partie en cours de progression (dans une future version).
+
+Il ne vous reste plus qu’à faire les bons choix, avoir de la chance lors du combat contre des monstres, et arriver au bout de votre propre aventure... 
+
+Bonne chance jeune aventurier et futur héros !
+
+L'équipe Rasputin
