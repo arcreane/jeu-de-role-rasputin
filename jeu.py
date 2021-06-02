@@ -31,6 +31,8 @@ armes = []
 degats_armes = []
 monstre_index = []
 
+armes_attaque = []
+
 pvmonstre_attaque = ""
 
 
@@ -79,14 +81,23 @@ def get_data(histoire):
     for i in range(len(titre)):
         titre[i] = titre[i].replace("\\n", "\n")
 
+    for i in range(len(armes)):
+        x = armes[i] + " : " + str(degats_armes[i]) + "pvs"
+        armes_attaque.append(x)
+    print(armes_attaque)
+
     f.close()
 
 
 root = tk.Tk()
-root.geometry("1080x720")
+root.geometry("1080x720+25+35")
 root.resizable(0, 0)
 root.title("Game")
 root.configure(background="#2e2b2a")
+
+icone = tk.PhotoImage(file="./51mF9jwGkEL.png")
+
+root.iconphoto(True, icone)
 
 
 def clean_window():  # fonction pour clear les widgets présents sur la fenetre principale
@@ -95,7 +106,7 @@ def clean_window():  # fonction pour clear les widgets présents sur la fenetre 
 
 
 def open_file_path():  # fonction qui permet de demander à l'utilisateur de choisir le fichier du jeu et qui affiche le boutton "suivant"
-    filename = fd.askopenfilename()
+    filename = fd.askopenfilename(filetype=[("Fichier histoire", ".csv")])
     print(filename)
     file[0] = filename
     if len(file[0]) > 2:
@@ -146,40 +157,40 @@ def create_jeu_window():  # fonction pour creer la fenetre du jeu ou l'on peut c
 
 
 def begin_game(index):  # fonction du "moteur de jeu"
-    Frame1 = tk.Frame(root, relief='groove', borderwidth="2", background="#d9d9d9")
+    Frame1 = tk.Frame(root, relief='groove', borderwidth="2", background="#c4e6ff")
     Frame1.place(relx=0.009, rely=0.014, relheight=0.354, relwidth=0.977)
 
     Labelframe1 = tk.LabelFrame(root, relief='groove', foreground="black", text='''Que voulez vous faire ?''',
-                                background="#d9d9d9")
+                                background="#ffffff")
     Labelframe1.place(relx=0.009, rely=0.389, relheight=0.507, relwidth=0.981)
 
     Button3 = tk.Button(root, text='''Quitter''', activebackground="#ececec", activeforeground="#000000",
-                        background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000",
-                        highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
+                        background="#ffffff", disabledforeground="#a3a3a3", foreground="#000000",
+                        highlightbackground="#d9d9d9", highlightcolor="black", pady="0", command=root.quit)
     Button3.place(relx=0.333, rely=0.917, height=44, width=347)
 
     def debut_histoire():  # fonction pour afficher le premier titre de l'histoire avec ses choix
-        Label1 = tk.Label(Frame1, background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000",
+        Label1 = tk.Label(Frame1, background="#c4e6ff", disabledforeground="#a3a3a3", foreground="#000000",
                           text=titre[0])
         Label1.place(relx=0.009, rely=0.039, height=231, width=1034)
 
-        Label2 = tk.Label(Labelframe1, text=choix1[0], background="#d9d9d9", disabledforeground="#a3a3a3",
+        Label2 = tk.Label(Labelframe1, text=choix1[0], background="#c4e6ff", disabledforeground="#a3a3a3",
                           foreground="#000000", relief="groove")
         Label2.place(relx=0.009, rely=0.082, height=191, width=492, bordermode='ignore')
 
         Button1 = tk.Button(Labelframe1, text='''Je fais ceci :''', activebackground="#ececec",
                             activeforeground="#000000", command=lambda: choix1_reponse(index),
-                            background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000",
+                            background="#8affde", disabledforeground="#a3a3a3", foreground="#000000",
                             highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
         Button1.place(relx=0.076, rely=0.658, height=94, width=347, bordermode='ignore')
 
-        Label3 = tk.Label(Labelframe1, text=choix2[0], background="#d9d9d9", disabledforeground="#a3a3a3",
+        Label3 = tk.Label(Labelframe1, text=choix2[0], background="#c4e6ff", disabledforeground="#a3a3a3",
                           foreground="#000000", relief="groove")
         Label3.place(relx=0.519, rely=0.082, height=191, width=493, bordermode='ignore')
 
         Button2 = tk.Button(Labelframe1, text='''Je fais cela :''', activebackground="#ececec",
                             activeforeground="#000000", command=lambda: choix2_reponse(index),
-                            background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000",
+                            background="#8affde", disabledforeground="#a3a3a3", foreground="#000000",
                             highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
         Button2.place(relx=0.595, rely=0.658, height=94, width=347, bordermode='ignore')
 
@@ -198,27 +209,27 @@ def begin_game(index):  # fonction du "moteur de jeu"
     def choix_apres(index):  # fonction pour afficher les titres et choix apres la premiere fois
         global Label1, Label2, Label3
 
-        Label1 = tk.Label(Frame1, background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000",
+        Label1 = tk.Label(Frame1, background="#c4e6ff", disabledforeground="#a3a3a3", foreground="#000000",
                           text=titre[index])
         Label1.place(relx=0.009, rely=0.039, height=231, width=1034)
 
-        Label2 = tk.Label(Labelframe1, text=choix1[index], background="#d9d9d9", disabledforeground="#a3a3a3",
+        Label2 = tk.Label(Labelframe1, text=choix1[index], background="#c4e6ff", disabledforeground="#a3a3a3",
                           foreground="#000000", relief="groove")
         Label2.place(relx=0.009, rely=0.082, height=191, width=492, bordermode='ignore')
 
         Button1 = tk.Button(Labelframe1, text='''Je fais ceci :''', activebackground="#ececec",
                             activeforeground="#000000", command=lambda: choix1_reponse(index),
-                            background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000",
+                            background="#8affde", disabledforeground="#a3a3a3", foreground="#000000",
                             highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
         Button1.place(relx=0.076, rely=0.658, height=94, width=347, bordermode='ignore')
 
-        Label3 = tk.Label(Labelframe1, text=choix2[index], background="#d9d9d9", disabledforeground="#a3a3a3",
+        Label3 = tk.Label(Labelframe1, text=choix2[index], background="#c4e6ff", disabledforeground="#a3a3a3",
                           foreground="#000000", relief="groove")
         Label3.place(relx=0.519, rely=0.082, height=191, width=493, bordermode='ignore')
 
         Button2 = tk.Button(Labelframe1, text='''Je fais cela :''', activebackground="#ececec",
                             activeforeground="#000000", command=lambda: choix2_reponse(index),
-                            background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000",
+                            background="#8affde", disabledforeground="#a3a3a3", foreground="#000000",
                             highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
         Button2.place(relx=0.595, rely=0.658, height=94, width=347, bordermode='ignore')
 
@@ -247,9 +258,15 @@ def begin_game(index):  # fonction du "moteur de jeu"
     def create_attaque_window(index_touse):  # fonction pour afficher la fenetre qui sert pour l'attaque
         global PvHero, PvMonstre, pvmonstre_attaque
 
+        def disable_event():  # fonction qui desactive la crois pour fermer sur la fenetre attaque (evite que l'utilisateur puisse bypass l'attaque)
+            pass
+
         attaque = tk.Toplevel(root)
-        attaque.geometry("1080x720")
+        attaque.geometry("1080x720+35+250")
         attaque.resizable(0, 0)
+        attaque.configure(background="#ffffff")
+
+        attaque.protocol("WM_DELETE_WINDOW", disable_event)
 
         pvmonstre_attaque = int(PvMonstre[index_touse])
 
@@ -257,17 +274,21 @@ def begin_game(index):  # fonction du "moteur de jeu"
             global pvmonstre_attaque, PvHero, Luck, Agilite, DegatsMonstre
             Toucher = random.randint(1, 200)  # Chance que tu touche le monstre + Chance que tu l'esquive
 
-            index = armes.index(arme)
+            index = armes_attaque.index(arme)
 
             if Toucher > (70 + int(Luck) + int(Attack) + int(Agilite) - int(Defense)):
                 pvmonstre_attaque = (pvmonstre_attaque - int(degats_armes[index]))
+                Scale2.configure(state="normal")
                 Scale2.set(pvmonstre_attaque)
+                Scale2.configure(state="disabled")
                 Label2.configure(text=random.choice(liste_herotouche))
                 if int(pvmonstre_attaque) < 1:
                     print("tu gagnes")
             elif Toucher < (70 + int(Agilite) + int(Luck) - int(Defense) + int(Attack)):
                 PvHero = (int(PvHero) - int(DegatsMonstre[index]))
+                Scale1.configure(state="normal")
                 Scale1.set(PvHero)
+                Scale1.configure(state="disabled")
                 Label2.configure(text=random.choice(liste_monstretouche))
                 if int(PvHero) < 1:
                     print("t es mort")
@@ -297,7 +318,9 @@ def begin_game(index):  # fonction du "moteur de jeu"
                     Label2.configure(
                         text=("Vous n'avez pas reussi a vous echapper\n" + random.choice(liste_monstretouche)))
                     print("impossible")
+                    Scale1.configure(state="normal")
                     Scale1.set(PvHero)
+                    Scale1.configure(state="disabled")
             # Label2.configure(text="pv monstre :" + str(pvmonstre_attaque) + "\npv hero :" + str(PvHero))
 
             return pvmonstre_attaque, PvHero
@@ -316,14 +339,14 @@ def begin_game(index):  # fonction du "moteur de jeu"
                 Button1.configure(state="disabled")
                 Button2.configure(state="disabled")
 
-        Label1 = tk.Label(attaque, text='''Vous avez été attaqué par un monstre :''', background="#d9d9d9",
+        Label1 = tk.Label(attaque, text='''Vous avez été attaqué par un monstre :''', background="#c4e6ff",
                           disabledforeground="#a3a3a3", font="-family {Segoe UI} -size 17 -weight bold -underline 1",
                           foreground="#000000")
         Label1.place(relx=0.037, rely=0.028, height=90, width=994)
 
         monstre_image = tk.PhotoImage(master=attaque, file=image_monstre[index_touse]).zoom(2)
 
-        Canvas1 = tk.Canvas(attaque, background="#d9d9d9", borderwidth="2", insertbackground="black",
+        Canvas1 = tk.Canvas(attaque, background="#c4e6ff", borderwidth="2", insertbackground="black",
                             selectbackground="blue",
                             selectforeground="white")
         Canvas1.place(relx=0.602, rely=0.222, height=258, width=350)
@@ -332,52 +355,56 @@ def begin_game(index):  # fonction du "moteur de jeu"
         height = Canvas1.winfo_reqheight()
         print(width, height)
 
-        image_mstre = Canvas1.create_image(width / 2, height / 2, image=monstre_image)
+        Canvas1.create_image(width / 2, height / 2, image=monstre_image)
 
-        Label3 = tk.Label(Canvas1, text="Monstre : " + nom_monstre[index_touse], background="#d9d9d9",
+        Label3 = tk.Label(Canvas1, text="Monstre : " + nom_monstre[index_touse], background="#c4e6ff",
                           disabledforeground="#a3a3a3",
                           foreground="#000000")
         Label3.place(relx=0.029, rely=0.834, height=31, width=324)
 
-        Frame1 = tk.Frame(attaque, relief='groove', borderwidth="2", background="#d9d9d9")
+        Frame1 = tk.Frame(attaque, relief='groove', borderwidth="2", background="#c4e6ff")
         Frame1.place(relx=0.056, rely=0.222, relheight=0.354, relwidth=0.419)
 
-        Label2 = tk.Label(Frame1, background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000")
+        Label2 = tk.Label(Frame1, text="Cliquer sur Attaquer ou Fuir", background="#c4e6ff",
+                          disabledforeground="#a3a3a3", foreground="#000000")
         Label2.place(relx=0.022, rely=0.039, height=231, width=426)
 
         Button1 = tk.Button(attaque, command=lambda: Attaquer(TCombobox1.get()), text='''Attaquer''',
                             activebackground="#ececec",
-                            activeforeground="#000000", background="#d9d9d9", disabledforeground="#a3a3a3",
+                            activeforeground="#000000", background="#8affde", disabledforeground="#a3a3a3",
                             foreground="#000000", highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
         Button1.place(relx=0.093, rely=0.708, height=84, width=227)
 
         Button2 = tk.Button(attaque, command=Fuir, text='''Fuir''', activebackground="#ececec",
                             activeforeground="#000000",
-                            background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000",
+                            background="#8affde", disabledforeground="#a3a3a3", foreground="#000000",
                             highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
         Button2.place(relx=0.667, rely=0.708, height=84, width=227)
 
         Button3 = tk.Button(attaque, text='''Quitter''', activebackground="#ececec", activeforeground="#000000",
-                            background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000",
+                            background="#8affde", disabledforeground="#a3a3a3", foreground="#000000",
                             highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
 
-        TCombobox1 = ttk.Combobox(attaque, values=armes)
+        TCombobox1 = ttk.Combobox(attaque, values=armes_attaque)
         TCombobox1.place(relx=0.093, rely=0.611, relheight=0.057, relwidth=0.206)
         TCombobox1.configure(takefocus="")
+        TCombobox1.set(armes_attaque[0])
 
-        Scale1 = tk.Scale(attaque, from_=0.0, to=PvHero, activebackground="#ececec", background="#d9d9d9",
-                          foreground="#000000",
-                          highlightbackground="#d9d9d9", highlightcolor="black", orient="horizontal",
+        Scale1 = tk.Scale(attaque, from_=0.0, to=PvHero, activebackground="#ececec", background="#ffffff",
+                          foreground="#000000", highlightcolor="black",
+                          highlightbackground="#ffffff", orient="horizontal",
                           troughcolor="#80f07d")
-        Scale1.place(relx=0.056, rely=0.125, relwidth=0.414, relheight=0.0, height=42, bordermode='ignore')
+        Scale1.place(relx=0.056, rely=0.160, relwidth=0.418, relheight=0.0, height=42, bordermode='ignore')
         Scale1.set(PvHero)
+        Scale1.configure(state="disabled")
 
-        Scale2 = tk.Scale(attaque, from_=0.0, to=pvmonstre_attaque, activebackground="#ececec", background="#d9d9d9",
-                          foreground="#000000", highlightbackground="#d9d9d9", highlightcolor="black",
-                          orient="horizontal",
+        Scale2 = tk.Scale(attaque, from_=0.0, to=pvmonstre_attaque, activebackground="#ececec", background="#ffffff",
+                          foreground="#000000", highlightcolor="black",
+                          orient="horizontal", highlightbackground="#ffffff",
                           troughcolor="#ff0000")
-        Scale2.place(relx=0.602, rely=0.125, relwidth=0.32, relheight=0.0, height=42, bordermode='ignore')
+        Scale2.place(relx=0.602, rely=0.160, relwidth=0.323, relheight=0.0, height=42, bordermode='ignore')
         Scale2.set(pvmonstre_attaque)
+        Scale2.configure(state="disabled")
 
         attaque.mainloop()
 
