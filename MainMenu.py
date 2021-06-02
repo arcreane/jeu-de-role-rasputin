@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import filedialog as fd
 import pygame
 import os
 
@@ -22,7 +21,7 @@ def create_premier():  # fonction pour créer le premier menu
                              foreground="#000000", highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
     bouton_jouer.place(relx=0.08, rely=0.348, height=94, width=177)
 
-    bouton_editer = tk.Button(Frame2, text='''EDITER''', command=lambda: os.system('editeur.py'),
+    bouton_editer = tk.Button(Frame2, text='''EDITER''', command=lambda: os.system('cmd /c python editeur.py'),
                               activebackground="#ececec", activeforeground="#000000", background="#85b90b",
                               disabledforeground="#a3a3a3", foreground="#000000", highlightbackground="#d9d9d9",
                               highlightcolor="black", pady="0")
@@ -71,8 +70,6 @@ def create_options():  # fonction pour créer la fenetre contenant les différen
     label_options.place(relx=0.328, rely=0.021, height=51, width=204)
 
 
-file = ["0"]
-
 pygame.mixer.init()
 
 son = pygame.mixer.Sound('main_loop.wav')
@@ -86,6 +83,10 @@ root.geometry("1080x720+363+127")
 root.resizable(0, 0)
 root.title("DualCent")
 root.configure(background="#2e2b2a")
+
+icone = tk.PhotoImage(file="./51mF9jwGkEL.png")
+
+root.iconphoto(True, icone)
 
 create_premier()
 
