@@ -3,6 +3,7 @@ from tkinter import messagebox
 from tkinter import ttk
 from tkinter import filedialog as fd
 import csv
+import os
 
 # --- definition des listes pour sauver les choix du createur ---
 tmp1 = []
@@ -89,6 +90,15 @@ def create_menu_editor():
             addstats_bouton.configure(state="normal")
             addmonstres_bouton.configure(state="normal")
             print(nom_histoire)
+
+        dossier_histoire = ("histoires")
+        CHECK_FOLDER = os.path.isdir(dossier_histoire)
+        if not CHECK_FOLDER:
+            os.makedirs(dossier_histoire)
+            print("created folder : ", dossier_histoire)
+
+        else:
+            print(dossier_histoire, "folder already exists.")
 
     titre_label = tk.Label(root, text='''Bienvenue dans l'éditeur :''', background="#fc9403",
                            disabledforeground="#a3a3a3",
@@ -375,7 +385,7 @@ def create_armes_window():
 
         file = open("./histoires/" + nom_histoire + ".csv", "a+", newline='')
         with file:
-            write = csv.writer(file, delimiter=';')
+            write = csv.writer(file, delimiter=";")
             write.writerows(listefinale)
         file.close()
 
@@ -721,7 +731,7 @@ def create_monstrewindow():
 
         file = open("./histoires/" + nom_histoire + ".csv", "a+", newline='')
         with file:
-            write = csv.writer(file)
+            write = csv.writer(file, delimiter=";")
             write.writerows(listefinale)
         file.close()
 
