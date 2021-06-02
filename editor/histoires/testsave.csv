@@ -1,1 +1,18 @@
-
+attaque;7
+defense;7
+agilite;7
+chance;9
+nommon;Squelette;Zombie
+pvmon;100;180
+degatsmon;15;20
+imgmon;C:/Users/tugdu/PycharmProjects/Projet info/histoires/iconfinder_01_halloween-skull-death-dead-skeleton_2660269.png;C:/Users/tugdu/PycharmProjects/Projet info/histoires/iconfinder_Zombie_3733544.png
+nom_arme;Epee;Arc
+description_arme;Epee qui fait mal;Arc qui fait bien mal sa mere
+boost_arme;15;25
+chemin_arme;C:/Users/tugdu/PycharmProjects/Projet info/histoires/iconfinder_Inkcontober_Sword_2730363.png;C:/Users/tugdu/PycharmProjects/Projet info/histoires/iconfinder_Hunting_bow_653279.png
+titre;Bonjour, vous vous reveillez dans un monde mystérieux!\nVous ne savez pas pourquoi, mais vous vous sentez bizzare au fond de vous!\nVous avancez un peu et voyez une personne. Vous lui parlez, que lui dites vous ?;"""Oh, bonjour Monsieur, vous vous trouvez actuellement pres de la ville de Bora Bora.""\n""Ah, d'accord. ""\n""Et vous, pourquoi etes vous la ?""";"""Ah, c'est dommage ca......""\n""Je le sais bien, mais je dois aller voir le roi pour lui parler, sauriez vous ou je peux le trouver ?""\n ""Pourquoi vous voulez le voir ?""";"Vous arrivez devant le roi apres une longue route, le saluez. Il commence a vous parler:\n""Vous devez etre le valeureux guerrier que nous attendions, vous devez nous aider a combattre le zombie qui nous terrasse !""";Un zombie apparait et vous devez le combattre;En allant voir le roi, vous passez dans une foret. Malheuresement, vous vous trouvez face a des squelettes qui vous font peur, et vous devez les combattre;fin
+choix1;Bonjour, pourriez vous m'aider, je ne sais pas ou je suis.;Je ne sais pas;J'ai trouvé ceci dans ma poche;Ah;bravo;Bravo;
+goto1;2;3;4;5;7;4;
+choix2;Bonjour, je ne sais pas quoi faire, vous pourriez m'aider ?;J'ai besoin de voir le roi de cette contrée, car j'ai besoin de lui parler;J'ai fait un songe qui me dit d'aller le voir;Euh......... je crois que j'ai pas le choix;bravo;Bravo;
+goto2;2;4;6;5;7;4;
+monstre_histoire;;;;;Zombie;Squelette;
