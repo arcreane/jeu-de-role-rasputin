@@ -32,10 +32,25 @@ def create_premier():  # fonction pour créer le premier menu
                                foreground="#000000", highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
     bouton_quitter.place(relx=0.709, rely=0.348, height=94, width=177)
 
+    bouton_tuto = tk.Button(Frame2, image=question, command=open_tuto, background="#85b90b", compound="center")
+    bouton_tuto.place(relx=0.473, rely=0.650)
+
     label_credits = tk.Label(root, text='''Crée par Rasputin Team''', background="#2e2b2a",
                              disabledforeground="#a3a3a3", foreground="#80ffff", font="-family {Forte} -size 13")
     label_credits.place(relx=0.806, rely=0.875, height=71, width=184)
 
+
+def open_tuto():  # fonction pour ouvrir une fenetre ou il y aura le tuto pour savoir comment utiliser notre programme
+    tuto = tk.Toplevel()
+    tuto.geometry("1080x720")
+    tuto.resizable(0, 0)
+
+    t = tk.Text(tuto)
+    t.place(relwidth=1.0, relheight=1.0)
+
+    f = open("./rasputin tuto.txt", 'r', encoding='utf-8')
+    t.insert(1.0, f.read())
+    t.configure(state="disabled")
 
 
 def create_options():  # fonction pour créer la fenetre contenant les différentes options
@@ -70,6 +85,8 @@ def create_options():  # fonction pour créer la fenetre contenant les différen
     label_options.place(relx=0.328, rely=0.021, height=51, width=204)
 
 
+file = ["0"]
+
 pygame.mixer.init()
 
 son = pygame.mixer.Sound('main_loop.wav')
@@ -83,6 +100,8 @@ root.geometry("1080x720+363+127")
 root.resizable(0, 0)
 root.title("DualCent")
 root.configure(background="#2e2b2a")
+
+question = tk.PhotoImage(master=root, file=r"question-mark-inside-a-circle.png")
 
 icone = tk.PhotoImage(file="./51mF9jwGkEL.png")
 
