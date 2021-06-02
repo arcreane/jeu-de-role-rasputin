@@ -4,6 +4,8 @@ from tkinter import ttk
 import csv
 import random
 
+# --- variables utilisees pour le jeu ---
+
 liste_herotouche = ["Ouch, cela a du faire mal", "Bravo !", "Vous avez une force surhumaine !",
                     "C'est génial, continuez comme ca !", "Le monstre a eu du mal à se défendre face à vous !",
                     "Votre attaque est destructrice !"]
@@ -35,6 +37,9 @@ armes_attaque = []
 
 pvmonstre_attaque = ""
 
+# --- fin variables utilisees pour le jeu ---
+
+# --- fonction pour recuperer les donnees de l'histoire ---
 
 def get_data(histoire):
     global titre, image_monstre, monstre_index, choix1, choix2, goto1, goto2, Attack, Defense, Agilite, Luck, PvMonstre, DegatsMonstre, nom_monstre, armes, degats_armes, PvHero, PvMonstre
@@ -95,6 +100,8 @@ def get_data(histoire):
     print(armes_attaque)
 
     f.close()
+
+# --- fin fonction pour recuperer donnees histoires ---
 
 
 root = tk.Tk()
@@ -158,10 +165,10 @@ def create_selection_window():  # fonction pour créer lafenetre pour choisir so
 
 def create_jeu_window():  # fonction pour creer la fenetre du jeu ou l'on peut choisir ses choix
 
-    Button3 = tk.Button(root, text='''Quitter''', activebackground="#ececec", activeforeground="#000000",
+    quitter_boutton = tk.Button(root, text='''Quitter''', activebackground="#ececec", activeforeground="#000000",
                         background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000",
                         highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
-    Button3.place(relx=0.333, rely=0.917, height=44, width=347)
+    quitter_boutton.place(relx=0.333, rely=0.917, height=44, width=347)
 
 
 def begin_game(index):  # fonction du "moteur de jeu"
@@ -172,35 +179,35 @@ def begin_game(index):  # fonction du "moteur de jeu"
                                 background="#ffffff")
     Labelframe1.place(relx=0.009, rely=0.389, relheight=0.507, relwidth=0.981)
 
-    Button3 = tk.Button(root, text='''Quitter''', activebackground="#ececec", activeforeground="#000000",
+    quitter_boutton = tk.Button(root, text='''Quitter''', activebackground="#ececec", activeforeground="#000000",
                         background="#ffffff", disabledforeground="#a3a3a3", foreground="#000000",
                         highlightbackground="#d9d9d9", highlightcolor="black", pady="0", command=root.quit)
-    Button3.place(relx=0.333, rely=0.917, height=44, width=347)
+    quitter_boutton.place(relx=0.333, rely=0.917, height=44, width=347)
 
     def debut_histoire():  # fonction pour afficher le premier titre de l'histoire avec ses choix
-        Label1 = tk.Label(Frame1, background="#c4e6ff", disabledforeground="#a3a3a3", foreground="#000000",
+        titre_label = tk.Label(Frame1, background="#c4e6ff", disabledforeground="#a3a3a3", foreground="#000000",
                           text=titre[0])
-        Label1.place(relx=0.009, rely=0.039, height=231, width=1034)
+        titre_label.place(relx=0.009, rely=0.039, height=231, width=1034)
 
-        Label2 = tk.Label(Labelframe1, text=choix1[0], background="#c4e6ff", disabledforeground="#a3a3a3",
+        choix1_label = tk.Label(Labelframe1, text=choix1[0], background="#c4e6ff", disabledforeground="#a3a3a3",
                           foreground="#000000", relief="groove")
-        Label2.place(relx=0.009, rely=0.082, height=191, width=492, bordermode='ignore')
+        choix1_label.place(relx=0.009, rely=0.082, height=191, width=492, bordermode='ignore')
 
-        Button1 = tk.Button(Labelframe1, text='''Je fais ceci :''', activebackground="#ececec",
+        choix1_bouton = tk.Button(Labelframe1, text='''Je fais ceci :''', activebackground="#ececec",
                             activeforeground="#000000", command=lambda: choix1_reponse(index),
                             background="#8affde", disabledforeground="#a3a3a3", foreground="#000000",
                             highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
-        Button1.place(relx=0.076, rely=0.658, height=94, width=347, bordermode='ignore')
+        choix1_bouton.place(relx=0.076, rely=0.658, height=94, width=347, bordermode='ignore')
 
-        Label3 = tk.Label(Labelframe1, text=choix2[0], background="#c4e6ff", disabledforeground="#a3a3a3",
+        choix2_label = tk.Label(Labelframe1, text=choix2[0], background="#c4e6ff", disabledforeground="#a3a3a3",
                           foreground="#000000", relief="groove")
-        Label3.place(relx=0.519, rely=0.082, height=191, width=493, bordermode='ignore')
+        choix2_label.place(relx=0.519, rely=0.082, height=191, width=493, bordermode='ignore')
 
-        Button2 = tk.Button(Labelframe1, text='''Je fais cela :''', activebackground="#ececec",
+        choix2_boutton = tk.Button(Labelframe1, text='''Je fais cela :''', activebackground="#ececec",
                             activeforeground="#000000", command=lambda: choix2_reponse(index),
                             background="#8affde", disabledforeground="#a3a3a3", foreground="#000000",
                             highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
-        Button2.place(relx=0.595, rely=0.658, height=94, width=347, bordermode='ignore')
+        choix2_boutton.place(relx=0.595, rely=0.658, height=94, width=347, bordermode='ignore')
 
     def choix1_reponse(index):  # fonction pour changer l'index si le choix 1 est pris
         index = int(goto1[index]) - 1
@@ -215,47 +222,47 @@ def begin_game(index):  # fonction du "moteur de jeu"
         return index
 
     def choix_apres(index):  # fonction pour afficher les titres et choix apres la premiere fois
-        global Label1, Label2, Label3
+        global titre_label, choix1_label, choix2_label
 
-        Label1 = tk.Label(Frame1, background="#c4e6ff", disabledforeground="#a3a3a3", foreground="#000000",
+        titre_label = tk.Label(Frame1, background="#c4e6ff", disabledforeground="#a3a3a3", foreground="#000000",
                           text=titre[index])
-        Label1.place(relx=0.009, rely=0.039, height=231, width=1034)
+        titre_label.place(relx=0.009, rely=0.039, height=231, width=1034)
 
-        Label2 = tk.Label(Labelframe1, text=choix1[index], background="#c4e6ff", disabledforeground="#a3a3a3",
+        choix1_label = tk.Label(Labelframe1, text=choix1[index], background="#c4e6ff", disabledforeground="#a3a3a3",
                           foreground="#000000", relief="groove")
-        Label2.place(relx=0.009, rely=0.082, height=191, width=492, bordermode='ignore')
+        choix1_label.place(relx=0.009, rely=0.082, height=191, width=492, bordermode='ignore')
 
-        Button1 = tk.Button(Labelframe1, text='''Je fais ceci :''', activebackground="#ececec",
+        choix1_boutton = tk.Button(Labelframe1, text='''Je fais ceci :''', activebackground="#ececec",
                             activeforeground="#000000", command=lambda: choix1_reponse(index),
                             background="#8affde", disabledforeground="#a3a3a3", foreground="#000000",
                             highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
-        Button1.place(relx=0.076, rely=0.658, height=94, width=347, bordermode='ignore')
+        choix1_boutton.place(relx=0.076, rely=0.658, height=94, width=347, bordermode='ignore')
 
-        Label3 = tk.Label(Labelframe1, text=choix2[index], background="#c4e6ff", disabledforeground="#a3a3a3",
+        choix2_label = tk.Label(Labelframe1, text=choix2[index], background="#c4e6ff", disabledforeground="#a3a3a3",
                           foreground="#000000", relief="groove")
-        Label3.place(relx=0.519, rely=0.082, height=191, width=493, bordermode='ignore')
+        choix2_label.place(relx=0.519, rely=0.082, height=191, width=493, bordermode='ignore')
 
-        Button2 = tk.Button(Labelframe1, text='''Je fais cela :''', activebackground="#ececec",
+        choix2_boutton = tk.Button(Labelframe1, text='''Je fais cela :''', activebackground="#ececec",
                             activeforeground="#000000", command=lambda: choix2_reponse(index),
                             background="#8affde", disabledforeground="#a3a3a3", foreground="#000000",
                             highlightbackground="#d9d9d9", highlightcolor="black", pady="0")
-        Button2.place(relx=0.595, rely=0.658, height=94, width=347, bordermode='ignore')
+        choix2_boutton.place(relx=0.595, rely=0.658, height=94, width=347, bordermode='ignore')
 
         if choix1[index] == '':  # s'il n'y a rien alors on enleve ce widget
             Labelframe1.place_forget()
-            Label2.place_forget()
-            Button1.place_forget()
+            choix1_label.place_forget()
+            choix1_boutton.place_forget()
 
         if choix2[index] == '':  # s'il n'y a rien alors on enleve ce widget
             Labelframe1.place_forget()
-            Label3.place_forget()
-            Button2.place_forget()
+            choix2_label.place_forget()
+            choix2_boutton.place_forget()
 
         if str(titre[index]) == "fin":  # si le titre est "fin" alors affiche un bouton pour quitter
-            Label2.place_forget()
-            Button1.place_forget()
-            Label3.place_forget()
-            Button2.place_forget()
+            choix1_label.place_forget()
+            choix1_boutton.place_forget()
+            choix2_label.place_forget()
+            choix2_boutton.place_forget()
 
         if len(monstre_index[
                    index]) != 0:  # s il y a un monstre à l'etape choisie, alors on affiche une nouvelle fenetre qui va servir pour l'attaque
