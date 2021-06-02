@@ -39,7 +39,7 @@ pvmonstre_attaque = ""
 def get_data(histoire):
     global titre, image_monstre, monstre_index, choix1, choix2, goto1, goto2, Attack, Defense, Agilite, Luck, PvMonstre, DegatsMonstre, nom_monstre, armes, degats_armes, PvHero, PvMonstre
 
-    f = open(histoire, "rt", encoding='utf-8-sig')
+    f = open(histoire, "rt", encoding='Windows-1252')
 
     reader = csv.reader(f, delimiter=";")
 
@@ -78,8 +78,16 @@ def get_data(histoire):
             monstre_index = row[1:]
     # fermeture du fichier csv
 
+    print(choix2)
+
     for i in range(len(titre)):
         titre[i] = titre[i].replace("\\n", "\n")
+
+    for j in range(len(choix2)):
+        choix2[j] = choix2[j].replace("\\n", "\n")
+
+    for k in range(len(choix1)):
+        choix1[k] = choix1[k].replace("\\n", "\n")
 
     for i in range(len(armes)):
         x = armes[i] + " : " + str(degats_armes[i]) + "pvs"
